@@ -38,7 +38,7 @@ use crate::{
 use codec::{Decode, Encode};
 use futures::{channel::mpsc, prelude::*, stream::FuturesUnordered};
 use libp2p::{multiaddr, PeerId};
-use log::{debug, trace, warn};
+use log::{debug, trace, warn, info};
 use prometheus_endpoint::{register, Counter, PrometheusError, Registry, U64};
 use sp_runtime::traits::Block as BlockT;
 use std::{
@@ -381,7 +381,7 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 			return
 		}
 
-		trace!(target: "sync", "Received {} transactions from {}", transactions.len(), who);
+		info!(target: "sync", "Received {:?} transactions from {}", transactions, who);
 		if let Some(ref mut peer) = self.peers.get_mut(&who) {
 			for t in transactions {
 				if self.pending_transactions.len() > MAX_PENDING_TRANSACTIONS {
