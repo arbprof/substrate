@@ -38,7 +38,7 @@ use crate::{
 use codec::{Decode, Encode};
 use futures::{channel::mpsc, prelude::*, stream::FuturesUnordered};
 use libp2p::{multiaddr, PeerId};
-use log::{debug, trace, warn};
+use log::{debug, info, trace, warn};
 use prometheus_endpoint::{register, Counter, PrometheusError, Registry, U64};
 use sp_runtime::traits::Block as BlockT;
 use std::{
