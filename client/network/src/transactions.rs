@@ -435,8 +435,6 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 			return;
 		}
 		if let Some(transaction) = self.transaction_pool.transaction(hash) {
-			info!(target: "sync", "{:?} : Propagating transaction [{:?}]", &hash, &transaction);
-
 			let propagated_to = self.do_propagate_transactions(&[(hash.clone(), transaction)]);
 			self.transaction_pool.on_broadcasted(propagated_to);
 		}
@@ -449,6 +447,10 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 		let mut propagated_to = HashMap::<_, Vec<_>>::new();
 		let mut propagated_transactions = 0;
 
+		for t in transactions {
+			let hash = self.transaction_pool.hash_of(&t);
+			info!(target: "sync", "{:?}, tx: {:?} ", hash, &t );
+		}
 		for (who, peer) in self.peers.iter_mut() {
 			// never send transactions to the light node
 			if matches!(peer.role, ObservedRole::Light) {
