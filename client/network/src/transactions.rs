@@ -394,7 +394,7 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 				}
 
 				let hash = self.transaction_pool.hash_of(&t);
-				info!(target: "sync", "{:?} with hash {:?} from {}", t, hash, who);
+				info!(target: "sync", "{:?} with hash {:?} from {}", &t, hash, who);
 
 				peer.known_transactions.insert(hash.clone());
 
