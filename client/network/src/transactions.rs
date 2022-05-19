@@ -394,7 +394,7 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 				}
 
 				let hash = self.transaction_pool.hash_of(&t);
-				info!(target: "sync", "{:?} with hash {:?} from {}", &t, hash, who);
+				// info!(target: "sync", "{:?} with hash {:?} from {}", &t, hash, who);
 
 				peer.known_transactions.insert(hash.clone());
 
@@ -435,6 +435,8 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 			return;
 		}
 		if let Some(transaction) = self.transaction_pool.transaction(hash) {
+			info!(target: "sync", "{:?} : Propagating transaction [{:?}]", &hash, &transaction);
+
 			let propagated_to = self.do_propagate_transactions(&[(hash.clone(), transaction)]);
 			self.transaction_pool.on_broadcasted(propagated_to);
 		}
