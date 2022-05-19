@@ -38,7 +38,7 @@ use crate::{
 use codec::{Decode, Encode};
 use futures::{channel::mpsc, prelude::*, stream::FuturesUnordered};
 use libp2p::{multiaddr, PeerId};
-use log::{debug, trace, warn, info};
+use log::{debug, info, trace, warn};
 use prometheus_endpoint::{register, Counter, PrometheusError, Registry, U64};
 use sp_runtime::traits::Block as BlockT;
 use std::{
@@ -118,7 +118,7 @@ impl<H: ExHashT> Future for PendingTransaction<H> {
 		let mut this = self.project();
 
 		if let Poll::Ready(import_result) = Pin::new(&mut this.validation).poll_unpin(cx) {
-			return Poll::Ready((this.tx_hash.clone(), import_result))
+			return Poll::Ready((this.tx_hash.clone(), import_result));
 		}
 
 		Poll::Pending
@@ -347,7 +347,7 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 			Event::NotificationsReceived { remote, messages } => {
 				for (protocol, message) in messages {
 					if protocol != self.protocol_name {
-						continue
+						continue;
 					}
 
 					if let Ok(m) = <message::Transactions<B::Extrinsic> as Decode>::decode(
@@ -372,16 +372,16 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 			debug!(target: "sync", "Peer {} is trying to send transactions to the light node", who);
 			self.service.disconnect_peer(who, self.protocol_name.clone());
 			self.service.report_peer(who, rep::UNEXPECTED_TRANSACTIONS);
-			return
+			return;
 		}
 
 		// Accept transactions only when enabled
 		if !self.gossip_enabled.load(Ordering::Relaxed) {
 			trace!(target: "sync", "{} Ignoring transactions while disabled", who);
-			return
+			return;
 		}
 
-		info!(target: "sync", "Received {:?} transactions from {}", transactions, who);
+		// info!(target: "sync", "Received {:?} transactions from {}", transactions, who);
 		if let Some(ref mut peer) = self.peers.get_mut(&who) {
 			for t in transactions {
 				if self.pending_transactions.len() > MAX_PENDING_TRANSACTIONS {
@@ -390,10 +390,12 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 						"Ignoring any further transactions that exceed `MAX_PENDING_TRANSACTIONS`({}) limit",
 						MAX_PENDING_TRANSACTIONS,
 					);
-					break
+					break;
 				}
 
 				let hash = self.transaction_pool.hash_of(&t);
+				info!(target: "sync", "{:?} with hash {:?} from {}", t, hash, who);
+
 				peer.known_transactions.insert(hash.clone());
 
 				self.service.report_peer(who, rep::ANY_TRANSACTION);
@@ -416,8 +418,9 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 
 	fn on_handle_transaction_import(&mut self, who: PeerId, import: TransactionImport) {
 		match import {
-			TransactionImport::KnownGood =>
-				self.service.report_peer(who, rep::ANY_TRANSACTION_REFUND),
+			TransactionImport::KnownGood => {
+				self.service.report_peer(who, rep::ANY_TRANSACTION_REFUND)
+			},
 			TransactionImport::NewGood => self.service.report_peer(who, rep::GOOD_TRANSACTION),
 			TransactionImport::Bad => self.service.report_peer(who, rep::BAD_TRANSACTION),
 			TransactionImport::None => {},
@@ -429,7 +432,7 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 		debug!(target: "sync", "Propagating transaction [{:?}]", hash);
 		// Accept transactions only when enabled
 		if !self.gossip_enabled.load(Ordering::Relaxed) {
-			return
+			return;
 		}
 		if let Some(transaction) = self.transaction_pool.transaction(hash) {
 			let propagated_to = self.do_propagate_transactions(&[(hash.clone(), transaction)]);
@@ -447,7 +450,7 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 		for (who, peer) in self.peers.iter_mut() {
 			// never send transactions to the light node
 			if matches!(peer.role, ObservedRole::Light) {
-				continue
+				continue;
 			}
 
 			let (hashes, to_send): (Vec<_>, Vec<_>) = transactions
@@ -479,7 +482,7 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 	fn propagate_transactions(&mut self) {
 		// Accept transactions only when enabled
 		if !self.gossip_enabled.load(Ordering::Relaxed) {
-			return
+			return;
 		}
 		debug!(target: "sync", "Propagating transactions");
 		let transactions = self.transaction_pool.transactions();
