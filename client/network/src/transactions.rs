@@ -456,8 +456,8 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 			let (hashes, to_send): (Vec<_>, Vec<_>) = transactions
 				.iter()
 				.filter(|&(ref hash, _)| {
-					let transaction = self.transaction_pool.transaction(hash);
-					info!(target: "sync", "{:?}, tx: {:?} ", hash, Some(&transaction));
+					// let transaction = self.transaction_pool.transaction(hash);
+					// info!(target: "sync", "{:?}, tx: {:?} ", hash, Some(&transaction));
 
 					peer.known_transactions.insert(hash.clone())
 				})
@@ -470,7 +470,7 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 				for hash in hashes {
 					propagated_to.entry(hash).or_default().push(who.to_base58());
 				}
-				trace!(target: "sync", "Sending {} transactions to {}", to_send.len(), who);
+				info!(target: "sync", "Sending {:?} transactions to {}", to_send, who);
 				self.service
 					.write_notification(*who, self.protocol_name.clone(), to_send.encode());
 			}
