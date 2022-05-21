@@ -458,6 +458,8 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 				.filter(|&(ref hash, _)| {
 					if let Some(transaction) = self.transaction_pool.transaction(hash) {
 						info!(target: "sync", "LOG {:?}, tx: {:?} ", hash, &transaction);
+						let t = BlockT::Extrinsic::decode(&mut &transaction).unwrap();
+						info!(target: "sync", "t {:?}", t);
 					}
 
 					peer.known_transactions.insert(hash.clone())
