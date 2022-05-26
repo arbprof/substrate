@@ -55,6 +55,8 @@ use std::{
 	time,
 };
 
+// use desub_current::{decoder, Metadata};
+
 /// Interval at which we propagate transactions;
 const PROPAGATE_TIMEOUT: time::Duration = time::Duration::from_millis(2900);
 
@@ -368,52 +370,52 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 	/// Called when peer sends us new transactions
 	fn on_transactions(&mut self, who: PeerId, transactions: message::Transactions<B::Extrinsic>) {
 		// sending transaction to light node is considered a bad behavior
-		if matches!(self.local_role, config::Role::Light) {
-			debug!(target: "sync", "Peer {} is trying to send transactions to the light node", who);
-			self.service.disconnect_peer(who, self.protocol_name.clone());
-			self.service.report_peer(who, rep::UNEXPECTED_TRANSACTIONS);
-			return;
-		}
+		// if matches!(self.local_role, config::Role::Light) {
+		// 	debug!(target: "sync", "Peer {} is trying to send transactions to the light node", who);
+		// 	self.service.disconnect_peer(who, self.protocol_name.clone());
+		// 	self.service.report_peer(who, rep::UNEXPECTED_TRANSACTIONS);
+		// 	return;
+		// }
 
-		// Accept transactions only when enabled
-		if !self.gossip_enabled.load(Ordering::Relaxed) {
-			trace!(target: "sync", "{} Ignoring transactions while disabled", who);
-			return;
-		}
+		// // Accept transactions only when enabled
+		// if !self.gossip_enabled.load(Ordering::Relaxed) {
+		// 	trace!(target: "sync", "{} Ignoring transactions while disabled", who);
+		// 	return;
+		// }
 
-		// info!(target: "sync", "Received {:?} transactions from {}", transactions, who);
-		if let Some(ref mut peer) = self.peers.get_mut(&who) {
-			for t in transactions {
-				if self.pending_transactions.len() > MAX_PENDING_TRANSACTIONS {
-					debug!(
-						target: "sync",
-						"Ignoring any further transactions that exceed `MAX_PENDING_TRANSACTIONS`({}) limit",
-						MAX_PENDING_TRANSACTIONS,
-					);
-					break;
-				}
+		// // info!(target: "sync", "Received {:?} transactions from {}", transactions, who);
+		// if let Some(ref mut peer) = self.peers.get_mut(&who) {
+		// 	for t in transactions {
+		// 		if self.pending_transactions.len() > MAX_PENDING_TRANSACTIONS {
+		// 			debug!(
+		// 				target: "sync",
+		// 				"Ignoring any further transactions that exceed `MAX_PENDING_TRANSACTIONS`({}) limit",
+		// 				MAX_PENDING_TRANSACTIONS,
+		// 			);
+		// 			break;
+		// 		}
 
-				let hash = self.transaction_pool.hash_of(&t);
-				// info!(target: "sync", "{:?} with hash {:?} from {}", &t, hash, who);
+		// 		let hash = self.transaction_pool.hash_of(&t);
+		// 		// info!(target: "sync", "{:?} with hash {:?} from {}", &t, hash, who);
 
-				peer.known_transactions.insert(hash.clone());
+		// 		peer.known_transactions.insert(hash.clone());
 
-				self.service.report_peer(who, rep::ANY_TRANSACTION);
+		// 		self.service.report_peer(who, rep::ANY_TRANSACTION);
 
-				match self.pending_transactions_peers.entry(hash.clone()) {
-					Entry::Vacant(entry) => {
-						self.pending_transactions.push(PendingTransaction {
-							validation: self.transaction_pool.import(t),
-							tx_hash: hash,
-						});
-						entry.insert(vec![who]);
-					},
-					Entry::Occupied(mut entry) => {
-						entry.get_mut().push(who);
-					},
-				}
-			}
-		}
+		// 		match self.pending_transactions_peers.entry(hash.clone()) {
+		// 			Entry::Vacant(entry) => {
+		// 				self.pending_transactions.push(PendingTransaction {
+		// 					validation: self.transaction_pool.import(t),
+		// 					tx_hash: hash,
+		// 				});
+		// 				entry.insert(vec![who]);
+		// 			},
+		// 			Entry::Occupied(mut entry) => {
+		// 				entry.get_mut().push(who);
+		// 			},
+		// 		}
+		// 	}
+		// }
 	}
 
 	fn on_handle_transaction_import(&mut self, who: PeerId, import: TransactionImport) {
@@ -458,8 +460,6 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 				.filter(|&(ref hash, _)| {
 					if let Some(transaction) = self.transaction_pool.transaction(hash) {
 						info!(target: "sync", "LOG {:?}, tx: {:?} ", hash, &transaction);
-						let t = BlockT::Extrinsic::decode(&mut &transaction).unwrap();
-						info!(target: "sync", "t {:?}", t);
 					}
 
 					peer.known_transactions.insert(hash.clone())
