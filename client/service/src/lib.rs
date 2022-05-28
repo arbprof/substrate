@@ -500,7 +500,7 @@ where
 		Box::pin(async move {
 			match import_future.await {
 				Ok(_) => {
-					info!(target: "sync", "new: {:?} ", &uxt);
+					info!(target: "sync", "new: {:?} ", &uxt.clone());
 					TransactionImport::NewGood
 				},
 				Err(e) => match e.into_pool_error() {
