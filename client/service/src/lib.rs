@@ -492,6 +492,8 @@ where
 
 		let best_block_id = BlockId::hash(self.client.info().best_hash);
 
+		let uxtcp = uxt.clone();
+
 		let import_future = self.pool.submit_one(
 			&best_block_id,
 			sc_transaction_pool_api::TransactionSource::External,
@@ -500,7 +502,7 @@ where
 		Box::pin(async move {
 			match import_future.await {
 				Ok(_) => {
-					info!(target: "sync", "new: {:?} ", uxt.clone());
+					info!(target: "sync", "new: {:?} ", uxtcp);
 					TransactionImport::NewGood
 				},
 				Err(e) => match e.into_pool_error() {
