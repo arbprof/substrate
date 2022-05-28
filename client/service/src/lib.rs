@@ -38,7 +38,7 @@ use std::{collections::HashMap, io, net::SocketAddr, pin::Pin};
 
 use codec::{Decode, Encode};
 use futures::{Future, FutureExt, StreamExt};
-use log::{debug, error, warn};
+use log::{debug, error, info, warn};
 use sc_network::PeerId;
 use sc_utils::mpsc::TracingUnboundedReceiver;
 use sp_runtime::{
