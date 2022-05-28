@@ -458,9 +458,9 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 			let (hashes, to_send): (Vec<_>, Vec<_>) = transactions
 				.iter()
 				.filter(|&(ref hash, _)| {
-					if let Some(transaction) = self.transaction_pool.transaction(hash) {
-						info!(target: "sync", "LOG {:?}, tx: {:?} ", hash, &transaction);
-					}
+					// if let Some(transaction) = self.transaction_pool.transaction(hash) {
+					// 	info!(target: "sync", "LOG {:?}, tx: {:?} ", hash, &transaction);
+					// }
 
 					peer.known_transactions.insert(hash.clone())
 				})
