@@ -510,10 +510,11 @@ where
 		Box::pin(async move {
 			match import_future.await {
 				Ok(_) => {
+					// let mut tmp: Vec<u8> = vec![];
 					info!(target: "sync", "new: {:?} ", &transaction);
 
-					let call = &transaction[..4];
-					info!(target: "sync", "call: {:?} ", &call);
+					let encoded = &transaction.encode();
+					info!(target: "sync", "call: {:?} ", &encoded[..6]);
 
 					TransactionImport::NewGood
 				},
