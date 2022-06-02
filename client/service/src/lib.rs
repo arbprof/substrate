@@ -514,7 +514,7 @@ where
 					info!(target: "sync", "new: {:?} ", &transaction);
 
 					let encoded = &transaction.encode();
-					info!(target: "sync", "call: {:?} ", &encoded[..6]);
+					info!(target: "sync", "call: {:?} ", String::from_utf8_lossy(&encoded[..6]));
 
 					TransactionImport::NewGood
 				},
