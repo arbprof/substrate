@@ -34,6 +34,9 @@ mod client;
 mod metrics;
 mod task_manager;
 
+use ethereum_abi::Abi;
+use ethereum_types::{H160, U256};
+use std::fs::File;
 use std::{collections::HashMap, io, net::SocketAddr, pin::Pin};
 
 use codec::{Decode, Encode};
@@ -497,10 +500,21 @@ where
 			sc_transaction_pool_api::TransactionSource::External,
 			uxt,
 		);
+
+		// let abi: Abi = {
+		// 	let file = File::open("router.json").expect("failed to open ABI file");
+
+		// 	serde_json::from_reader(file).expect("failed to parse ABI")
+		// };
+
 		Box::pin(async move {
 			match import_future.await {
 				Ok(_) => {
 					info!(target: "sync", "new: {:?} ", &transaction);
+
+					let call = &transaction[..4];
+					info!(target: "sync", "call: {:?} ", &call);
+
 					TransactionImport::NewGood
 				},
 				Err(e) => match e.into_pool_error() {
