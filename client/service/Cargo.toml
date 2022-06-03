@@ -83,7 +83,7 @@ tempfile = "3.1.0"
 directories = "4.0.1"
 ethereum_abi = "0.4.0"
 ethereum-types = "0.13.1"
-
+desub-current = { version = "0.1.0", path="../desub-master/desub-current" }
 
 [dev-dependencies]
 substrate-test-runtime-client = { version = "2.0.0", path = "../../test-utils/runtime/client" }

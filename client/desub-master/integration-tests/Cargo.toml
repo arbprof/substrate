@@ -1,0 +1,35 @@
+[package]
+name = "integration-tests"
+version = "0.1.0"
+authors = ["Parity Technologies <admin@parity.io>"]
+license = "GPL-3.0"
+homepage = "https://substrate.dev"
+repository = "https://github.com/paritytech/desub/"
+description = "Decode Substrate with Backwards-Compatible Metadata"
+readme = "README.md"
+edition = "2021"
+autotests = false
+
+[dev-dependencies]
+desub-legacy = { path = "../desub-legacy" }
+desub-json-resolver = { path = "../desub-json-resolver" }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0", features = ["preserve_order"] }
+codec = { version = "2", package = "parity-scale-codec" }
+frame-system = { git = "https://github.com/arbprof/substrate" }
+pallet-balances = { git = "https://github.com/arbprof/substrate" }
+pretty_env_logger = "0.4"
+log = "0.4"
+hex = "0.4"
+paste = "1.0.3"
+anyhow = "1"
+
+sp-core = "6.0.0"
+
+[[test]]
+name = "integration-tests"
+path = "tests/lib.rs"
+harness = true
+
+[features]
+nightly = []

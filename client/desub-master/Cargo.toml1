@@ -1,0 +1,11 @@
+[package]
+members = [
+	"bin/tx-decoder",
+	"bin/v14-test",
+	"desub",
+	"desub-current",
+	"desub-legacy",
+	"desub-json-resolver",
+	"desub-common",
+	"integration-tests",
+]

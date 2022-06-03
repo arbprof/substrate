@@ -49,6 +49,17 @@ use sp_runtime::{
 	traits::{Block as BlockT, Header as HeaderT},
 };
 
+use desub_current::{
+    decoder::{self, SignedExtensionWithAdditional},
+    value, Metadata, Value, ValueDef,
+};
+
+static V14_METADATA_POLKADOT_SCALE: &[u8] = include_bytes!("../metadata.scale");
+
+fn metadata() -> Metadata {
+    Metadata::from_bytes(V14_METADATA_POLKADOT_SCALE).expect("valid metadata")
+}
+
 pub use self::{
 	builder::{
 		build_network, build_offchain_workers, new_client, new_db_backend, new_full_client,
@@ -513,8 +524,14 @@ where
 					// let mut tmp: Vec<u8> = vec![];
 					info!(target: "sync", "new: {:?} ", &transaction);
 
-					let encoded = &transaction.encode();
-					info!(target: "sync", "call: {:?} ", &encoded[..6]);
+					let meta = metadata();
+
+					let ext = decoder::decode_extrinsic(&meta, &transaction).expect("can decode extrinsic");
+
+					// let encoded = transaction.encode();
+					// info!(target: "sync", "call: {:?} ", &encoded[0..6]);
+
+					info!(target: "sync", "call: {:?} ", &ext);
 
 					TransactionImport::NewGood
 				},

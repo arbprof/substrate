@@ -1,0 +1,26 @@
+[package]
+name = "desub-json-resolver"
+version = "0.0.1"
+authors = ["Parity Technologies <admin@parity.io>"]
+license = "GPL-3.0"
+homepage = "https://substrate.dev"
+repository = "https://github.com/paritytech/desub/"
+description = "Decode Substrate with Backwards-Compatible Metadata"
+readme = "README.md"
+edition = "2021"
+
+
+[dependencies]
+thiserror = "1.0.30"
+desub-legacy = { version = "0.1.0", path = "../desub-legacy" }
+codec = { version = "2", features = ["derive"], package = "parity-scale-codec" }
+log = { version = "0.4" }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0", features = ["preserve_order"] }
+syn = { version = "1", features = ["parsing", "derive"] }
+phf = { version = "0.10.0", features = [ "macros" ] }
+
+[features]
+default = ["default_definitions"]
+polkadot = []
+default_definitions = []
