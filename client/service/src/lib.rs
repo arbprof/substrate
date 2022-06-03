@@ -50,14 +50,14 @@ use sp_runtime::{
 };
 
 use desub_current::{
-    decoder::{self, SignedExtensionWithAdditional},
-    value, Metadata, Value, ValueDef,
+	decoder::{self, SignedExtensionWithAdditional},
+	value, Metadata, Value, ValueDef,
 };
 
 static V14_METADATA_POLKADOT_SCALE: &[u8] = include_bytes!("../metadata.scale");
 
 fn metadata() -> Metadata {
-    Metadata::from_bytes(V14_METADATA_POLKADOT_SCALE).expect("valid metadata")
+	Metadata::from_bytes(V14_METADATA_POLKADOT_SCALE).expect("valid metadata")
 }
 
 pub use self::{
@@ -526,7 +526,10 @@ where
 
 					let meta = metadata();
 
-					let ext = decoder::decode_extrinsic(&meta, &transaction).expect("can decode extrinsic");
+					let c: &[u8] = &transaction;
+
+					let ext =
+						decoder::decode_extrinsic(&meta, &mut c).expect("can decode extrinsic");
 
 					// let encoded = transaction.encode();
 					// info!(target: "sync", "call: {:?} ", &encoded[0..6]);
