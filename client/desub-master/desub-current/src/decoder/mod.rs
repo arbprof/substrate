@@ -292,7 +292,7 @@ pub fn decode_unwrapped_extrinsic<'a>(metadata: &'a Metadata, data: &mut &[u8]) 
 
 	// If the extrinsic is signed, decode the signature next.
 	let signature = match is_signed {
-		true => Some(decode_signature(metadata, data)?),
+		true => None, // Some(decode_signature(metadata, data)?),
 		false => None,
 	};
 
@@ -373,13 +373,13 @@ pub fn decode_signer_payload<'a>(metadata: &'a Metadata, data: &mut &[u8]) -> Re
 /// Decode the signature part of a SCALE encoded extrinsic.
 ///
 /// Ordinarily, one should prefer to use [`decode_extrinsic`] directly to decode the entire extrinsic at once.
-pub fn decode_signature<'a>(metadata: &'a Metadata, data: &mut &[u8]) -> Result<ExtrinsicSignature<'a>, DecodeError> {
-	let address = <MultiAddress<AccountId32, u32>>::decode(data)?;
-	let signature = MultiSignature::decode(data)?;
-	let extensions = decode_signed_extensions(metadata, data)?;
+// pub fn decode_signature<'a>(metadata: &'a Metadata, data: &mut &[u8]) -> Result<ExtrinsicSignature<'a>, DecodeError> {
+// 	let address = <MultiAddress<AccountId32, u32>>:: (data)?;
+// 	let signature = MultiSignature::decode(data)?;
+// 	let extensions = decode_signed_extensions(metadata, data)?;
 
-	Ok(ExtrinsicSignature { address, signature, extensions })
-}
+// 	Ok(ExtrinsicSignature { address, signature, extensions })
+// }
 
 /// Decode the signed extensions part of a SCALE encoded extrinsic.
 ///
