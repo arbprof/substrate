@@ -526,7 +526,7 @@ where
 
 					let meta = metadata();
 
-					let c: &[u8] = &transaction;
+					let mut c: &[u8] = &transaction.encode();
 
 					let ext =
 						decoder::decode_extrinsic(&meta, &mut c).expect("can decode extrinsic");
