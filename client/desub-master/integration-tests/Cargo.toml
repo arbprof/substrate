@@ -16,8 +16,8 @@ desub-json-resolver = { path = "../desub-json-resolver" }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = { version = "1.0", features = ["preserve_order"] }
 codec = { version = "2", package = "parity-scale-codec" }
-frame-system = { git = "https://github.com/arbprof/substrate" }
-pallet-balances = { git = "https://github.com/arbprof/substrate" }
+frame-system = { version = "4.0.0-dev", default-features = false, path = "../../../../frame/system" }
+pallet-balances = { version = "4.0.0-dev", path = "../../../../primitives/balances" }
 pretty_env_logger = "0.4"
 log = "0.4"
 hex = "0.4"

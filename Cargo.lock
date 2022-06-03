@@ -498,7 +498,7 @@ dependencies = [
  "sp-consensus",
  "sp-core 6.0.0",
  "sp-finality-grandpa",
- "sp-keyring 6.0.0",
+ "sp-keyring",
  "sp-keystore 0.12.0",
  "sp-runtime 6.0.0",
  "sp-tracing 5.0.0",
@@ -1658,7 +1658,7 @@ dependencies = [
  "serde",
  "serde_json",
  "sp-core 6.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "sp-keyring 6.0.0 (git+https://github.com/arbprof/substrate)",
+ "sp-keyring",
  "sp-runtime 6.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "thiserror",
 ]
@@ -4926,7 +4926,7 @@ dependencies = [
  "sp-core 6.0.0",
  "sp-finality-grandpa",
  "sp-inherents",
- "sp-keyring 6.0.0",
+ "sp-keyring",
  "sp-keystore 0.12.0",
  "sp-runtime 6.0.0",
  "sp-timestamp",
@@ -4966,7 +4966,7 @@ dependencies = [
  "sp-consensus-babe",
  "sp-core 6.0.0",
  "sp-externalities 0.12.0",
- "sp-keyring 6.0.0",
+ "sp-keyring",
  "sp-keystore 0.12.0",
  "sp-runtime 6.0.0",
  "sp-state-machine 0.12.0",
@@ -5165,7 +5165,7 @@ dependencies = [
  "sp-core 6.0.0",
  "sp-finality-grandpa",
  "sp-inherents",
- "sp-keyring 6.0.0",
+ "sp-keyring",
  "sp-runtime 6.0.0",
  "sp-timestamp",
  "substrate-build-script-utils",
@@ -5237,7 +5237,7 @@ dependencies = [
  "sp-core 6.0.0",
  "sp-inherents",
  "sp-io 6.0.0",
- "sp-keyring 6.0.0",
+ "sp-keyring",
  "sp-runtime 6.0.0",
  "sp-timestamp",
  "substrate-test-client",
@@ -6042,7 +6042,7 @@ dependencies = [
  "sp-core 6.0.0",
  "sp-finality-grandpa",
  "sp-io 6.0.0",
- "sp-keyring 6.0.0",
+ "sp-keyring",
  "sp-runtime 6.0.0",
  "sp-session",
  "sp-staking",
@@ -6098,7 +6098,7 @@ dependencies = [
  "scale-info 2.1.2",
  "sp-core 6.0.0",
  "sp-io 6.0.0",
- "sp-keyring 6.0.0",
+ "sp-keyring",
  "sp-runtime 6.0.0",
  "sp-std 4.0.0",
 ]
@@ -8288,7 +8288,7 @@ dependencies = [
  "serde_json",
  "sp-blockchain",
  "sp-core 6.0.0",
- "sp-keyring 6.0.0",
+ "sp-keyring",
  "sp-keystore 0.12.0",
  "sp-panic-handler 4.0.0",
  "sp-runtime 6.0.0",
@@ -8407,7 +8407,7 @@ dependencies = [
  "sp-consensus-slots",
  "sp-core 6.0.0",
  "sp-inherents",
- "sp-keyring 6.0.0",
+ "sp-keyring",
  "sp-keystore 0.12.0",
  "sp-runtime 6.0.0",
  "sp-timestamp",
@@ -8489,7 +8489,7 @@ dependencies = [
  "sp-consensus",
  "sp-consensus-babe",
  "sp-core 6.0.0",
- "sp-keyring 6.0.0",
+ "sp-keyring",
  "sp-keystore 0.12.0",
  "sp-runtime 6.0.0",
  "substrate-test-runtime-client",
@@ -8734,7 +8734,7 @@ dependencies = [
  "sp-consensus",
  "sp-core 6.0.0",
  "sp-finality-grandpa",
- "sp-keyring 6.0.0",
+ "sp-keyring",
  "sp-keystore 0.12.0",
  "sp-runtime 6.0.0",
  "sp-tracing 5.0.0",
@@ -8766,7 +8766,7 @@ dependencies = [
  "sp-blockchain",
  "sp-core 6.0.0",
  "sp-finality-grandpa",
- "sp-keyring 6.0.0",
+ "sp-keyring",
  "sp-runtime 6.0.0",
  "substrate-test-runtime-client",
  "thiserror",
@@ -9917,19 +9917,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "sp-application-crypto"
-version = "6.0.0"
-source = "git+https://github.com/arbprof/substrate#4f9e7e6dc903a497317b1596396156760ad960ab"
-dependencies = [
- "parity-scale-codec 3.1.2",
- "scale-info 2.1.2",
- "serde",
- "sp-core 6.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-io 6.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-std 4.0.0 (git+https://github.com/arbprof/substrate)",
-]
-
-[[package]]
 name = "sp-application-crypto-test"
 version = "2.0.0"
 dependencies = [
@@ -9971,21 +9958,6 @@ dependencies = [
  "serde",
  "sp-debug-derive 4.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "sp-std 4.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "static_assertions",
-]
-
-[[package]]
-name = "sp-arithmetic"
-version = "5.0.0"
-source = "git+https://github.com/arbprof/substrate#4f9e7e6dc903a497317b1596396156760ad960ab"
-dependencies = [
- "integer-sqrt",
- "num-traits",
- "parity-scale-codec 3.1.2",
- "scale-info 2.1.2",
- "serde",
- "sp-debug-derive 4.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-std 4.0.0 (git+https://github.com/arbprof/substrate)",
  "static_assertions",
 ]
 
@@ -10241,52 +10213,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "sp-core"
-version = "6.0.0"
-source = "git+https://github.com/arbprof/substrate#4f9e7e6dc903a497317b1596396156760ad960ab"
-dependencies = [
- "base58",
- "bitflags",
- "blake2-rfc",
- "byteorder",
- "dyn-clonable",
- "ed25519-dalek",
- "futures 0.3.21",
- "hash-db",
- "hash256-std-hasher",
- "hex",
- "impl-serde",
- "lazy_static",
- "libsecp256k1",
- "log 0.4.17",
- "merlin",
- "num-traits",
- "parity-scale-codec 3.1.2",
- "parity-util-mem",
- "parking_lot 0.12.1",
- "primitive-types",
- "rand 0.7.3",
- "regex",
- "scale-info 2.1.2",
- "schnorrkel",
- "secp256k1",
- "secrecy",
- "serde",
- "sp-core-hashing 4.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-debug-derive 4.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-externalities 0.12.0 (git+https://github.com/arbprof/substrate)",
- "sp-runtime-interface 6.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-std 4.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-storage 6.0.0 (git+https://github.com/arbprof/substrate)",
- "ss58-registry",
- "substrate-bip39",
- "thiserror",
- "tiny-bip39",
- "wasmi",
- "zeroize",
-]
-
-[[package]]
 name = "sp-core-hashing"
 version = "4.0.0"
 dependencies = [
@@ -10310,20 +10236,6 @@ dependencies = [
  "sha2 0.9.9",
  "sp-std 4.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "tiny-keccak",
- "twox-hash",
-]
-
-[[package]]
-name = "sp-core-hashing"
-version = "4.0.0"
-source = "git+https://github.com/arbprof/substrate#4f9e7e6dc903a497317b1596396156760ad960ab"
-dependencies = [
- "blake2 0.10.4",
- "byteorder",
- "digest 0.10.3",
- "sha2 0.10.2",
- "sha3 0.10.1",
- "sp-std 4.0.0 (git+https://github.com/arbprof/substrate)",
  "twox-hash",
 ]
 
@@ -10366,16 +10278,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "sp-debug-derive"
-version = "4.0.0"
-source = "git+https://github.com/arbprof/substrate#4f9e7e6dc903a497317b1596396156760ad960ab"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn",
-]
-
-[[package]]
 name = "sp-externalities"
 version = "0.12.0"
 dependencies = [
@@ -10395,17 +10297,6 @@ dependencies = [
  "parity-scale-codec 3.1.2",
  "sp-std 4.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "sp-storage 6.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
-name = "sp-externalities"
-version = "0.12.0"
-source = "git+https://github.com/arbprof/substrate#4f9e7e6dc903a497317b1596396156760ad960ab"
-dependencies = [
- "environmental",
- "parity-scale-codec 3.1.2",
- "sp-std 4.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-storage 6.0.0 (git+https://github.com/arbprof/substrate)",
 ]
 
 [[package]]
@@ -10490,48 +10381,12 @@ dependencies = [
 ]
 
 [[package]]
-name = "sp-io"
-version = "6.0.0"
-source = "git+https://github.com/arbprof/substrate#4f9e7e6dc903a497317b1596396156760ad960ab"
-dependencies = [
- "futures 0.3.21",
- "hash-db",
- "libsecp256k1",
- "log 0.4.17",
- "parity-scale-codec 3.1.2",
- "parking_lot 0.12.1",
- "secp256k1",
- "sp-core 6.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-externalities 0.12.0 (git+https://github.com/arbprof/substrate)",
- "sp-keystore 0.12.0 (git+https://github.com/arbprof/substrate)",
- "sp-runtime-interface 6.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-state-machine 0.12.0 (git+https://github.com/arbprof/substrate)",
- "sp-std 4.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-tracing 5.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-trie 6.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-wasm-interface 6.0.0 (git+https://github.com/arbprof/substrate)",
- "tracing",
- "tracing-core",
-]
-
-[[package]]
 name = "sp-keyring"
 version = "6.0.0"
 dependencies = [
  "lazy_static",
  "sp-core 6.0.0",
  "sp-runtime 6.0.0",
- "strum",
-]
-
-[[package]]
-name = "sp-keyring"
-version = "6.0.0"
-source = "git+https://github.com/arbprof/substrate#4f9e7e6dc903a497317b1596396156760ad960ab"
-dependencies = [
- "lazy_static",
- "sp-core 6.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-runtime 6.0.0 (git+https://github.com/arbprof/substrate)",
  "strum",
 ]
 
@@ -10567,22 +10422,6 @@ dependencies = [
  "schnorrkel",
  "sp-core 6.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "sp-externalities 0.12.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "thiserror",
-]
-
-[[package]]
-name = "sp-keystore"
-version = "0.12.0"
-source = "git+https://github.com/arbprof/substrate#4f9e7e6dc903a497317b1596396156760ad960ab"
-dependencies = [
- "async-trait",
- "futures 0.3.21",
- "merlin",
- "parity-scale-codec 3.1.2",
- "parking_lot 0.12.1",
- "schnorrkel",
- "sp-core 6.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-externalities 0.12.0 (git+https://github.com/arbprof/substrate)",
  "thiserror",
 ]
 
@@ -10652,16 +10491,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "sp-panic-handler"
-version = "4.0.0"
-source = "git+https://github.com/arbprof/substrate#4f9e7e6dc903a497317b1596396156760ad960ab"
-dependencies = [
- "backtrace",
- "lazy_static",
- "regex",
-]
-
-[[package]]
 name = "sp-rpc"
 version = "6.0.0"
 dependencies = [
@@ -10722,28 +10551,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "sp-runtime"
-version = "6.0.0"
-source = "git+https://github.com/arbprof/substrate#4f9e7e6dc903a497317b1596396156760ad960ab"
-dependencies = [
- "either",
- "hash256-std-hasher",
- "impl-trait-for-tuples",
- "log 0.4.17",
- "parity-scale-codec 3.1.2",
- "parity-util-mem",
- "paste 1.0.7",
- "rand 0.7.3",
- "scale-info 2.1.2",
- "serde",
- "sp-application-crypto 6.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-arithmetic 5.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-core 6.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-io 6.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-std 4.0.0 (git+https://github.com/arbprof/substrate)",
-]
-
-[[package]]
 name = "sp-runtime-interface"
 version = "6.0.0"
 dependencies = [
@@ -10784,23 +10591,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "sp-runtime-interface"
-version = "6.0.0"
-source = "git+https://github.com/arbprof/substrate#4f9e7e6dc903a497317b1596396156760ad960ab"
-dependencies = [
- "impl-trait-for-tuples",
- "parity-scale-codec 3.1.2",
- "primitive-types",
- "sp-externalities 0.12.0 (git+https://github.com/arbprof/substrate)",
- "sp-runtime-interface-proc-macro 5.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-std 4.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-storage 6.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-tracing 5.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-wasm-interface 6.0.0 (git+https://github.com/arbprof/substrate)",
- "static_assertions",
-]
-
-[[package]]
 name = "sp-runtime-interface-proc-macro"
 version = "5.0.0"
 dependencies = [
@@ -10816,18 +10606,6 @@ name = "sp-runtime-interface-proc-macro"
 version = "5.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "22ecb916b9664ed9f90abef0ff5a3e61454c1efea5861b2997e03f39b59b955f"
-dependencies = [
- "Inflector",
- "proc-macro-crate 1.1.3",
- "proc-macro2",
- "quote",
- "syn",
-]
-
-[[package]]
-name = "sp-runtime-interface-proc-macro"
-version = "5.0.0"
-source = "git+https://github.com/arbprof/substrate#4f9e7e6dc903a497317b1596396156760ad960ab"
 dependencies = [
  "Inflector",
  "proc-macro-crate 1.1.3",
@@ -10969,28 +10747,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "sp-state-machine"
-version = "0.12.0"
-source = "git+https://github.com/arbprof/substrate#4f9e7e6dc903a497317b1596396156760ad960ab"
-dependencies = [
- "hash-db",
- "log 0.4.17",
- "num-traits",
- "parity-scale-codec 3.1.2",
- "parking_lot 0.12.1",
- "rand 0.7.3",
- "smallvec 1.8.0",
- "sp-core 6.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-externalities 0.12.0 (git+https://github.com/arbprof/substrate)",
- "sp-panic-handler 4.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-std 4.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-trie 6.0.0 (git+https://github.com/arbprof/substrate)",
- "thiserror",
- "tracing",
- "trie-root",
-]
-
-[[package]]
 name = "sp-std"
 version = "4.0.0"
 
@@ -10999,11 +10755,6 @@ name = "sp-std"
 version = "4.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "14804d6069ee7a388240b665f17908d98386ffb0b5d39f89a4099fc7a2a4c03f"
-
-[[package]]
-name = "sp-std"
-version = "4.0.0"
-source = "git+https://github.com/arbprof/substrate#4f9e7e6dc903a497317b1596396156760ad960ab"
 
 [[package]]
 name = "sp-storage"
@@ -11029,19 +10780,6 @@ dependencies = [
  "serde",
  "sp-debug-derive 4.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "sp-std 4.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
-name = "sp-storage"
-version = "6.0.0"
-source = "git+https://github.com/arbprof/substrate#4f9e7e6dc903a497317b1596396156760ad960ab"
-dependencies = [
- "impl-serde",
- "parity-scale-codec 3.1.2",
- "ref-cast",
- "serde",
- "sp-debug-derive 4.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-std 4.0.0 (git+https://github.com/arbprof/substrate)",
 ]
 
 [[package]]
@@ -11109,18 +10847,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "sp-tracing"
-version = "5.0.0"
-source = "git+https://github.com/arbprof/substrate#4f9e7e6dc903a497317b1596396156760ad960ab"
-dependencies = [
- "parity-scale-codec 3.1.2",
- "sp-std 4.0.0 (git+https://github.com/arbprof/substrate)",
- "tracing",
- "tracing-core",
- "tracing-subscriber",
-]
-
-[[package]]
 name = "sp-transaction-pool"
 version = "4.0.0-dev"
 dependencies = [
@@ -11180,22 +10906,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "sp-trie"
-version = "6.0.0"
-source = "git+https://github.com/arbprof/substrate#4f9e7e6dc903a497317b1596396156760ad960ab"
-dependencies = [
- "hash-db",
- "memory-db",
- "parity-scale-codec 3.1.2",
- "scale-info 2.1.2",
- "sp-core 6.0.0 (git+https://github.com/arbprof/substrate)",
- "sp-std 4.0.0 (git+https://github.com/arbprof/substrate)",
- "thiserror",
- "trie-db",
- "trie-root",
-]
-
-[[package]]
 name = "sp-version"
 version = "5.0.0"
 dependencies = [
@@ -11244,18 +10954,6 @@ dependencies = [
  "log 0.4.17",
  "parity-scale-codec 3.1.2",
  "sp-std 4.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "wasmi",
-]
-
-[[package]]
-name = "sp-wasm-interface"
-version = "6.0.0"
-source = "git+https://github.com/arbprof/substrate#4f9e7e6dc903a497317b1596396156760ad960ab"
-dependencies = [
- "impl-trait-for-tuples",
- "log 0.4.17",
- "parity-scale-codec 3.1.2",
- "sp-std 4.0.0 (git+https://github.com/arbprof/substrate)",
  "wasmi",
 ]
 
@@ -11477,7 +11175,7 @@ dependencies = [
  "sp-blockchain",
  "sp-consensus",
  "sp-core 6.0.0",
- "sp-keyring 6.0.0",
+ "sp-keyring",
  "sp-keystore 0.12.0",
  "sp-runtime 6.0.0",
  "sp-state-machine 0.12.0",
@@ -11515,7 +11213,7 @@ dependencies = [
  "sp-finality-grandpa",
  "sp-inherents",
  "sp-io 6.0.0",
- "sp-keyring 6.0.0",
+ "sp-keyring",
  "sp-offchain",
  "sp-runtime 6.0.0",
  "sp-runtime-interface 6.0.0",
