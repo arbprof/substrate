@@ -526,15 +526,21 @@ where
 
 					let meta = metadata();
 
-					let mut c: &[u8] = &transaction.encode();
+					let mut encoded: &[u8] = &transaction.encode();
 
-					let ext =
-						decoder::decode_extrinsic(&meta, &mut c).expect("can decode extrinsic");
+					info!(target: "sync", "encoded 6: {:?} ", &encoded[0..6]);
+
+					let ext = decoder::decode_extrinsic(&meta, &mut encoded); //.expect("can decode extrinsic");
+
+					match ext {
+						Ok(data) => info!(target: "sync", "call: {:?} ", data),
+						Err(error) => (),
+					};
 
 					// let encoded = transaction.encode();
 					// info!(target: "sync", "call: {:?} ", &encoded[0..6]);
 
-					info!(target: "sync", "call: {:?} ", &ext);
+					// info!(target: "sync", "call: {:?} ", &ext);
 
 					TransactionImport::NewGood
 				},
