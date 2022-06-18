@@ -23,7 +23,7 @@ test-helpers = []
 
 [dependencies]
 thiserror = "1.0.30"
-futures = "0.3.21"
+futures = { version = "0.3.21", features = ["compat"] }
 jsonrpc-pubsub = "18.0"
 jsonrpc-core = "18.0"
 rand = "0.7.3"
@@ -89,6 +89,7 @@ rlp = "0.5"
 ethereum = { version = "0.12.0", features = ["with-codec"] }
 fp-rpc = { git = "https://github.com/arbprof/frontier", branch = "moonbeam-polkadot-v0.9.19" }
 fc-rpc-core = { git = "https://github.com/arbprof/frontier", branch = "moonbeam-polkadot-v0.9.19" }
+
 
 
 
