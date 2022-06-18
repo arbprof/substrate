@@ -86,8 +86,6 @@ ethereum-types = "0.13.1"
 desub-current = { version = "0.1.0", path="../desub-master/desub-current" }
 hex = "0.4.3"
 
-fc-rpc = { git = "https://github.com/arbprof/frontier", branch = "moonbeam-polkadot-v0.9.19" }
-
 [dev-dependencies]
 substrate-test-runtime-client = { version = "2.0.0", path = "../../test-utils/runtime/client" }
 substrate-test-runtime = { version = "2.0.0", path = "../../test-utils/runtime/" }

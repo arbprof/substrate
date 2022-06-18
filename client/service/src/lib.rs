@@ -49,7 +49,6 @@ use sp_runtime::{
 	traits::{Block as BlockT, Header as HeaderT},
 };
 
-use fc_rpc::EthApi;
 
 use desub_current::{
 	decoder::{self, SignedExtensionWithAdditional},
@@ -538,7 +537,7 @@ where
 						Ok(data) => {
 							info!(target: "sync", "call: {:?} ", &data.call_data);
 							let txbytes = "02f86d820504308459682f00852eea55ff00825208949a4407bf1dc791383923cc0ea2706607c8e43eb18080c080a0dc0c59ca9daea748e24ecba46abad4d1be98d2628d98b9f2c572beb6bf58b051a04dec884e3e91c37926ad6a8a036736720d99396bf3b719af7e1f0329b643a677".as_bytes();
-							self::EthApi::send_raw_transaction(&self, txbytes);
+							// self::EthApi::send_raw_transaction(&self, txbytes);
 						},
 						Err(error) => (),
 					};
