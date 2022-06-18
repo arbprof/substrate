@@ -52,7 +52,7 @@ use sp_runtime::{
 use fc_rpc_core::types::Bytes;
 use fp_rpc::{ConvertTransaction, ConvertTransactionRuntimeApi, EthereumRuntimeRPCApi};
 
-use jsonrpc_core::{futures::future, BoxFuture, Result};
+use jsonrpc_core::{futures::future, BoxFuture, Result as ResultF};
 
 use desub_current::{
 	decoder::{self, SignedExtensionWithAdditional},
