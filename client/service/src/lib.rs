@@ -50,7 +50,9 @@ use sp_runtime::{
 };
 
 use fc_rpc_core::types::Bytes;
-use fp_rpc::{ConvertTransaction, ConvertTransactionRuntimeApi, EthereumRuntimeRPCApi};
+use fp_rpc::{
+	internal_err, ConvertTransaction, ConvertTransactionRuntimeApi, EthereumRuntimeRPCApi,
+};
 
 use jsonrpc_core::{futures::future, BoxFuture, Result as ResultF};
 
