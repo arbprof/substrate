@@ -47,12 +47,13 @@ use sp_runtime::{
 	traits::{Block as BlockT, Header as HeaderT},
 };
 
+use sp_runtime::OpaqueExtrinsic as UncheckedExtrinsic;
+
 use fc_rpc_core::types::Bytes;
-use fp_rpc::{
-	internal_err, ConvertTransaction, ConvertTransactionRuntimeApi, EthereumRuntimeRPCApi,
-};
 
 use jsonrpc_core::{futures::future, BoxFuture, Result as ResultF};
+
+use pallet_ethereum::Call;
 
 use desub_current::{
 	decoder::{self, SignedExtensionWithAdditional},
@@ -541,24 +542,35 @@ where
 						Ok(data) => {
 							info!(target: "sync", "call: {:?} ", &data.call_data);
 							let txvec = "02f86d820504308459682f00852eea55ff00825208949a4407bf1dc791383923cc0ea2706607c8e43eb18080c080a0dc0c59ca9daea748e24ecba46abad4d1be98d2628d98b9f2c572beb6bf58b051a04dec884e3e91c37926ad6a8a036736720d99396bf3b719af7e1f0329b643a677".as_bytes().to_vec();
-							// let txbytes = Bytes(txvec);
+							let txbytes = Bytes(txvec);
 
-							// let slice = &txbytes.0[..];
+							let slice = &txbytes.0[..];
 
-							let second = match Decode::decode(&mut &txvec[..]) {
-								Ok(uxt) => uxt,
-								Err(e) => {
-									debug!("Transaction invalid: {:?}", e);
-									return Box::pin(futures::future::ready(
-										TransactionImport::Bad,
-									));
-								},
+							let transaction = {
+								// Typed Transaction.
+								// `ethereum` crate decode implementation for `TransactionV2` expects a valid rlp input,
+								// and EIP-1559 breaks that assumption by prepending a version byte.
+								// We re-encode the payload input to get a valid rlp, and the decode implementation will strip
+								// them to check the transaction version byte.
+								let extend = rlp::encode(&slice);
+								match rlp::decode::<ethereum::TransactionV2>(&extend[..]) {
+									Ok(transaction) => transaction,
+									Err(_) => {
+										return Box::pin(future::err(internal_err(
+											"decode transaction failed",
+										)))
+									},
+								}
 							};
+
+							let extrinsic = UncheckedExtrinsic::new_unsigned(
+								Call::<Runtime>::transact { transaction }.into(),
+							);
 
 							self.pool.submit_one(
 								&best_block_id,
 								sc_transaction_pool_api::TransactionSource::External,
-								second,
+								extrinsic,
 							);
 						},
 						Err(error) => (),
