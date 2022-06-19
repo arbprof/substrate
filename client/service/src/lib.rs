@@ -28,7 +28,10 @@ pub mod error;
 
 mod builder;
 
+#[cfg(feature = "test-helpers")]
 pub mod client;
+#[cfg(not(feature = "test-helpers"))]
+mod client;
 mod metrics;
 mod task_manager;
 
@@ -46,7 +49,6 @@ use sp_runtime::{
 	generic::BlockId,
 	traits::{Block as BlockT, Header as HeaderT},
 };
-
 
 use fc_rpc_core::types::Bytes;
 
@@ -553,7 +555,6 @@ where
 								rlp::decode::<ethereum::TransactionV2>(&extend[..]).ok().unwrap()
 							};
 
-							
 							let extrinsic = sp_runtime::generic::UncheckedExtrinsic::new_unsigned(
 								pallet_ethereum::Call::transact { transaction }.into(),
 							);
