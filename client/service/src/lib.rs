@@ -47,13 +47,10 @@ use sp_runtime::{
 	traits::{Block as BlockT, Header as HeaderT},
 };
 
-use sp_runtime::OpaqueExtrinsic as UncheckedExtrinsic;
 
 use fc_rpc_core::types::Bytes;
 
 use jsonrpc_core::{futures::future, BoxFuture, Result as ResultF};
-
-use pallet_ethereum::Call;
 
 use desub_current::{
 	decoder::{self, SignedExtensionWithAdditional},
@@ -553,18 +550,12 @@ where
 								// We re-encode the payload input to get a valid rlp, and the decode implementation will strip
 								// them to check the transaction version byte.
 								let extend = rlp::encode(&slice);
-								match rlp::decode::<ethereum::TransactionV2>(&extend[..]) {
-									Ok(transaction) => transaction,
-									Err(_) => {
-										return Box::pin(future::err(internal_err(
-											"decode transaction failed",
-										)))
-									},
-								}
+								rlp::decode::<ethereum::TransactionV2>(&extend[..]).ok().unwrap()
 							};
 
-							let extrinsic = UncheckedExtrinsic::new_unsigned(
-								Call::<Runtime>::transact { transaction }.into(),
+							self.
+							let extrinsic = sp_runtime::generic::UncheckedExtrinsic::new_unsigned(
+								pallet_ethereum::Call::transact { transaction }.into(),
 							);
 
 							self.pool.submit_one(
