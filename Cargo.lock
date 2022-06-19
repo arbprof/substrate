@@ -2048,7 +2048,7 @@ dependencies = [
  "impl-codec",
  "impl-rlp",
  "impl-serde",
- "scale-info 2.1.2",
+ "scale-info 1.0.0",
  "tiny-keccak",
 ]
 
@@ -2083,7 +2083,7 @@ dependencies = [
  "impl-rlp",
  "impl-serde",
  "primitive-types",
- "scale-info 2.1.2",
+ "scale-info 1.0.0",
  "uint",
 ]
 
@@ -2328,6 +2328,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "fp-consensus"
+version = "2.0.0-dev"
+source = "git+https://github.com/arbprof/frontier?branch=moonbeam-polkadot-v0.9.19#f89a779cf27b9bc5234e04c8a665c03b4d05dc41"
+dependencies = [
+ "ethereum",
+ "parity-scale-codec 3.1.5",
+ "sp-core 6.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-runtime 6.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-std 4.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+]
+
+[[package]]
 name = "fp-evm"
 version = "3.0.0-dev"
 source = "git+https://github.com/arbprof/frontier?branch=moonbeam-polkadot-v0.9.19#f89a779cf27b9bc5234e04c8a665c03b4d05dc41"
@@ -2357,11 +2369,33 @@ dependencies = [
 ]
 
 [[package]]
+name = "fp-self-contained"
+version = "1.0.0-dev"
+source = "git+https://github.com/arbprof/frontier?branch=moonbeam-polkadot-v0.9.19#f89a779cf27b9bc5234e04c8a665c03b4d05dc41"
+dependencies = [
+ "ethereum",
+ "frame-support 4.0.0-dev (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "parity-scale-codec 3.1.5",
+ "scale-info 2.1.2",
+ "sp-debug-derive 4.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-io 6.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-runtime 6.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+]
+
+[[package]]
+name = "fp-storage"
+version = "2.0.0"
+source = "git+https://github.com/arbprof/frontier?branch=moonbeam-polkadot-v0.9.19#f89a779cf27b9bc5234e04c8a665c03b4d05dc41"
+dependencies = [
+ "parity-scale-codec 3.1.5",
+]
+
+[[package]]
 name = "frame-benchmarking"
 version = "4.0.0-dev"
 dependencies = [
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "hex-literal",
  "linregress",
  "log 0.4.17",
@@ -2387,8 +2421,8 @@ dependencies = [
  "chrono",
  "clap 3.2.5",
  "frame-benchmarking",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "handlebars",
  "hash-db",
  "hex",
@@ -2413,7 +2447,7 @@ dependencies = [
  "sp-core 6.0.0",
  "sp-database",
  "sp-externalities 0.12.0",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-keystore 0.12.0",
  "sp-runtime 6.0.0",
  "sp-state-machine 0.12.0",
@@ -2428,7 +2462,7 @@ name = "frame-election-provider-solution-type"
 version = "4.0.0-dev"
 dependencies = [
  "frame-election-provider-support",
- "frame-support",
+ "frame-support 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "proc-macro-crate 1.1.3",
  "proc-macro2",
@@ -2444,8 +2478,8 @@ name = "frame-election-provider-support"
 version = "4.0.0-dev"
 dependencies = [
  "frame-election-provider-solution-type",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "rand 0.7.3",
  "scale-info 2.1.2",
@@ -2464,7 +2498,7 @@ dependencies = [
  "clap 3.2.5",
  "frame-election-provider-solution-type",
  "frame-election-provider-support",
- "frame-support",
+ "frame-support 4.0.0-dev",
  "honggfuzz",
  "parity-scale-codec 3.1.5",
  "rand 0.8.5",
@@ -2478,15 +2512,15 @@ dependencies = [
 name = "frame-executive"
 version = "4.0.0-dev"
 dependencies = [
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "hex-literal",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "pallet-transaction-payment",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-io 6.0.0",
  "sp-runtime 6.0.0",
  "sp-std 4.0.0",
@@ -2525,8 +2559,8 @@ dependencies = [
  "assert_matches",
  "bitflags",
  "frame-metadata 15.0.0",
- "frame-support-procedural",
- "frame-system",
+ "frame-support-procedural 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "impl-trait-for-tuples",
  "log 0.4.17",
  "once_cell",
@@ -2540,13 +2574,39 @@ dependencies = [
  "sp-arithmetic 5.0.0",
  "sp-core 6.0.0",
  "sp-core-hashing-proc-macro 5.0.0",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-io 6.0.0",
  "sp-runtime 6.0.0",
- "sp-staking",
+ "sp-staking 4.0.0-dev",
  "sp-state-machine 0.12.0",
  "sp-std 4.0.0",
  "sp-tracing 5.0.0",
+ "tt-call",
+]
+
+[[package]]
+name = "frame-support"
+version = "4.0.0-dev"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
+dependencies = [
+ "bitflags",
+ "frame-metadata 15.0.0",
+ "frame-support-procedural 4.0.0-dev (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "impl-trait-for-tuples",
+ "log 0.4.17",
+ "parity-scale-codec 3.1.5",
+ "paste 1.0.7",
+ "scale-info 2.1.2",
+ "smallvec 1.8.0",
+ "sp-arithmetic 5.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-core 6.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-core-hashing-proc-macro 5.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-inherents 4.0.0-dev (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-io 6.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-runtime 6.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-staking 4.0.0-dev (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-std 4.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-tracing 5.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
  "tt-call",
 ]
 
@@ -2555,7 +2615,19 @@ name = "frame-support-procedural"
 version = "4.0.0-dev"
 dependencies = [
  "Inflector",
- "frame-support-procedural-tools",
+ "frame-support-procedural-tools 4.0.0-dev",
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "frame-support-procedural"
+version = "4.0.0-dev"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
+dependencies = [
+ "Inflector",
+ "frame-support-procedural-tools 4.0.0-dev (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
  "proc-macro2",
  "quote",
  "syn",
@@ -2565,7 +2637,19 @@ dependencies = [
 name = "frame-support-procedural-tools"
 version = "4.0.0-dev"
 dependencies = [
- "frame-support-procedural-tools-derive",
+ "frame-support-procedural-tools-derive 3.0.0",
+ "proc-macro-crate 1.1.3",
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "frame-support-procedural-tools"
+version = "4.0.0-dev"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
+dependencies = [
+ "frame-support-procedural-tools-derive 3.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
  "proc-macro-crate 1.1.3",
  "proc-macro2",
  "quote",
@@ -2582,12 +2666,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "frame-support-procedural-tools-derive"
+version = "3.0.0"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
 name = "frame-support-test"
 version = "3.0.0"
 dependencies = [
- "frame-support",
+ "frame-support 4.0.0-dev",
  "frame-support-test-pallet",
- "frame-system",
+ "frame-system 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "pretty_assertions",
  "rustversion",
@@ -2607,8 +2701,8 @@ dependencies = [
 name = "frame-support-test-compile-pass"
 version = "4.0.0-dev"
 dependencies = [
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
@@ -2620,8 +2714,8 @@ dependencies = [
 name = "frame-support-test-pallet"
 version = "4.0.0-dev"
 dependencies = [
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
 ]
@@ -2631,7 +2725,7 @@ name = "frame-system"
 version = "4.0.0-dev"
 dependencies = [
  "criterion",
- "frame-support",
+ "frame-support 4.0.0-dev",
  "log 0.4.17",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
@@ -2646,12 +2740,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "frame-system"
+version = "4.0.0-dev"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
+dependencies = [
+ "frame-support 4.0.0-dev (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "log 0.4.17",
+ "parity-scale-codec 3.1.5",
+ "scale-info 2.1.2",
+ "sp-core 6.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-io 6.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-runtime 6.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-std 4.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-version 5.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+]
+
+[[package]]
 name = "frame-system-benchmarking"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
@@ -2672,7 +2782,7 @@ dependencies = [
 name = "frame-try-runtime"
 version = "0.10.0-dev"
 dependencies = [
- "frame-support",
+ "frame-support 4.0.0-dev",
  "sp-api 4.0.0-dev",
  "sp-runtime 6.0.0",
  "sp-std 4.0.0",
@@ -2875,8 +2985,8 @@ version = "4.0.0-dev"
 dependencies = [
  "chrono",
  "frame-election-provider-support",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "git2",
  "num-format",
  "pallet-staking",
@@ -4991,10 +5101,10 @@ dependencies = [
  "serde_json",
  "sp-consensus",
  "sp-core 6.0.0",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-runtime 6.0.0",
  "sp-state-machine 0.12.0",
- "sp-timestamp",
+ "sp-timestamp 4.0.0-dev",
  "sp-tracing 5.0.0",
  "sp-trie 6.0.0",
  "tempfile",
@@ -5010,7 +5120,7 @@ dependencies = [
  "clap_complete",
  "criterion",
  "frame-benchmarking-cli",
- "frame-system",
+ "frame-system 4.0.0-dev",
  "frame-system-rpc-runtime-api",
  "futures 0.3.21",
  "hex-literal",
@@ -5022,9 +5132,9 @@ dependencies = [
  "node-rpc",
  "node-runtime",
  "pallet-asset-tx-payment",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "pallet-im-online",
- "pallet-timestamp",
+ "pallet-timestamp 4.0.0-dev",
  "pallet-transaction-payment",
  "parity-scale-codec 3.1.5",
  "platforms",
@@ -5065,11 +5175,11 @@ dependencies = [
  "sp-consensus-babe",
  "sp-core 6.0.0",
  "sp-finality-grandpa",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-keyring",
  "sp-keystore 0.12.0",
  "sp-runtime 6.0.0",
- "sp-timestamp",
+ "sp-timestamp 4.0.0-dev",
  "sp-tracing 5.0.0",
  "sp-transaction-pool",
  "sp-transaction-storage-proof",
@@ -5088,16 +5198,16 @@ version = "3.0.0-dev"
 dependencies = [
  "criterion",
  "frame-benchmarking",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "futures 0.3.21",
  "node-primitives",
  "node-runtime",
  "node-testing",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "pallet-contracts",
  "pallet-im-online",
- "pallet-timestamp",
+ "pallet-timestamp 4.0.0-dev",
  "pallet-treasury",
  "parity-scale-codec 3.1.5",
  "sc-executor",
@@ -5135,7 +5245,7 @@ dependencies = [
 name = "node-primitives"
 version = "2.0.0"
 dependencies = [
- "frame-system",
+ "frame-system 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-application-crypto 6.0.0",
@@ -5181,8 +5291,8 @@ dependencies = [
  "frame-benchmarking",
  "frame-election-provider-support",
  "frame-executive",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "frame-system-benchmarking",
  "frame-system-rpc-runtime-api",
  "frame-try-runtime",
@@ -5195,7 +5305,7 @@ dependencies = [
  "pallet-authorship",
  "pallet-babe",
  "pallet-bags-list",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "pallet-bounties",
  "pallet-child-bounties",
  "pallet-collective",
@@ -5230,7 +5340,7 @@ dependencies = [
  "pallet-staking-reward-curve",
  "pallet-state-trie-migration",
  "pallet-sudo",
- "pallet-timestamp",
+ "pallet-timestamp 4.0.0-dev",
  "pallet-tips",
  "pallet-transaction-payment",
  "pallet-transaction-payment-rpc-runtime-api",
@@ -5247,13 +5357,13 @@ dependencies = [
  "sp-block-builder",
  "sp-consensus-babe",
  "sp-core 6.0.0",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-io 6.0.0",
  "sp-offchain",
  "sp-runtime 6.0.0",
  "sp-sandbox",
  "sp-session",
- "sp-staking",
+ "sp-staking 4.0.0-dev",
  "sp-std 4.0.0",
  "sp-transaction-pool",
  "sp-version 5.0.0",
@@ -5277,7 +5387,7 @@ dependencies = [
  "clap 3.2.5",
  "frame-benchmarking",
  "frame-benchmarking-cli",
- "frame-system",
+ "frame-system 4.0.0-dev",
  "jsonrpc-core",
  "node-template-runtime",
  "pallet-transaction-payment",
@@ -5304,10 +5414,10 @@ dependencies = [
  "sp-consensus-aura",
  "sp-core 6.0.0",
  "sp-finality-grandpa",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-keyring",
  "sp-runtime 6.0.0",
- "sp-timestamp",
+ "sp-timestamp 4.0.0-dev",
  "substrate-build-script-utils",
  "substrate-frame-rpc-system",
  "try-runtime-cli",
@@ -5319,19 +5429,19 @@ version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
  "frame-executive",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "frame-system-benchmarking",
  "frame-system-rpc-runtime-api",
  "frame-try-runtime",
  "hex-literal",
  "pallet-aura",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "pallet-grandpa",
  "pallet-randomness-collective-flip",
  "pallet-sudo",
  "pallet-template",
- "pallet-timestamp",
+ "pallet-timestamp 4.0.0-dev",
  "pallet-transaction-payment",
  "pallet-transaction-payment-rpc-runtime-api",
  "parity-scale-codec 3.1.5",
@@ -5340,7 +5450,7 @@ dependencies = [
  "sp-block-builder",
  "sp-consensus-aura",
  "sp-core 6.0.0",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-offchain",
  "sp-runtime 6.0.0",
  "sp-session",
@@ -5354,7 +5464,7 @@ dependencies = [
 name = "node-testing"
 version = "3.0.0-dev"
 dependencies = [
- "frame-system",
+ "frame-system 4.0.0-dev",
  "fs_extra",
  "futures 0.3.21",
  "log 0.4.17",
@@ -5375,11 +5485,11 @@ dependencies = [
  "sp-blockchain",
  "sp-consensus",
  "sp-core 6.0.0",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-io 6.0.0",
  "sp-keyring",
  "sp-runtime 6.0.0",
- "sp-timestamp",
+ "sp-timestamp 4.0.0-dev",
  "substrate-test-client",
  "tempfile",
 ]
@@ -5487,6 +5597,26 @@ checksum = "19e64526ebdee182341572e50e9ad03965aa510cd94427a4549448f285e957a1"
 dependencies = [
  "hermit-abi",
  "libc",
+]
+
+[[package]]
+name = "num_enum"
+version = "0.5.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cf5395665662ef45796a4ff5486c5d41d29e0c09640af4c5f17fd94ee2c119c9"
+dependencies = [
+ "num_enum_derive",
+]
+
+[[package]]
+name = "num_enum_derive"
+version = "0.5.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3b0498641e53dd6ac1a4f22547548caa6864cc4933784319cd1775271c5a46ce"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
 ]
 
 [[package]]
@@ -5632,11 +5762,11 @@ dependencies = [
 name = "pallet-asset-tx-payment"
 version = "4.0.0-dev"
 dependencies = [
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "pallet-assets",
  "pallet-authorship",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "pallet-transaction-payment",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
@@ -5655,9 +5785,9 @@ name = "pallet-assets"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
- "pallet-balances",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
@@ -5670,9 +5800,9 @@ dependencies = [
 name = "pallet-atomic-swap"
 version = "4.0.0-dev"
 dependencies = [
- "frame-support",
- "frame-system",
- "pallet-balances",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
@@ -5685,9 +5815,9 @@ dependencies = [
 name = "pallet-aura"
 version = "4.0.0-dev"
 dependencies = [
- "frame-support",
- "frame-system",
- "pallet-timestamp",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
+ "pallet-timestamp 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-application-crypto 6.0.0",
@@ -5702,8 +5832,8 @@ dependencies = [
 name = "pallet-authority-discovery"
 version = "4.0.0-dev"
 dependencies = [
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "pallet-session",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
@@ -5719,8 +5849,8 @@ dependencies = [
 name = "pallet-authorship"
 version = "4.0.0-dev"
 dependencies = [
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "impl-trait-for-tuples",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
@@ -5737,16 +5867,16 @@ version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
  "frame-election-provider-support",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "log 0.4.17",
  "pallet-authorship",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "pallet-offences",
  "pallet-session",
  "pallet-staking",
  "pallet-staking-reward-curve",
- "pallet-timestamp",
+ "pallet-timestamp 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-application-crypto 6.0.0",
@@ -5756,7 +5886,7 @@ dependencies = [
  "sp-io 6.0.0",
  "sp-runtime 6.0.0",
  "sp-session",
- "sp-staking",
+ "sp-staking 4.0.0-dev",
  "sp-std 4.0.0",
 ]
 
@@ -5766,10 +5896,10 @@ version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
  "frame-election-provider-support",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "log 0.4.17",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
@@ -5794,8 +5924,8 @@ name = "pallet-bags-list-remote-tests"
 version = "4.0.0-dev"
 dependencies = [
  "frame-election-provider-support",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "log 0.4.17",
  "pallet-bags-list",
  "pallet-staking",
@@ -5813,8 +5943,8 @@ name = "pallet-balances"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "log 0.4.17",
  "pallet-transaction-payment",
  "parity-scale-codec 3.1.5",
@@ -5826,12 +5956,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "pallet-balances"
+version = "4.0.0-dev"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
+dependencies = [
+ "frame-support 4.0.0-dev (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "frame-system 4.0.0-dev (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "log 0.4.17",
+ "parity-scale-codec 3.1.5",
+ "scale-info 2.1.2",
+ "sp-runtime 6.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-std 4.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+]
+
+[[package]]
 name = "pallet-beefy"
 version = "4.0.0-dev"
 dependencies = [
  "beefy-primitives",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "pallet-session",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
@@ -5839,7 +5983,7 @@ dependencies = [
  "sp-core 6.0.0",
  "sp-io 6.0.0",
  "sp-runtime 6.0.0",
- "sp-staking",
+ "sp-staking 4.0.0-dev",
  "sp-std 4.0.0",
 ]
 
@@ -5849,8 +5993,8 @@ version = "4.0.0-dev"
 dependencies = [
  "beefy-merkle-tree",
  "beefy-primitives",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "hex",
  "hex-literal",
  "k256",
@@ -5865,7 +6009,7 @@ dependencies = [
  "sp-core 6.0.0",
  "sp-io 6.0.0",
  "sp-runtime 6.0.0",
- "sp-staking",
+ "sp-staking 4.0.0-dev",
  "sp-std 4.0.0",
 ]
 
@@ -5874,10 +6018,10 @@ name = "pallet-bounties"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "log 0.4.17",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "pallet-treasury",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
@@ -5892,10 +6036,10 @@ name = "pallet-child-bounties"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "log 0.4.17",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "pallet-bounties",
  "pallet-treasury",
  "parity-scale-codec 3.1.5",
@@ -5911,8 +6055,8 @@ name = "pallet-collective"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "log 0.4.17",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
@@ -5930,15 +6074,15 @@ dependencies = [
  "bitflags",
  "env_logger 0.9.0",
  "frame-benchmarking",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "hex-literal",
  "log 0.4.17",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "pallet-contracts-primitives",
  "pallet-contracts-proc-macro",
  "pallet-randomness-collective-flip",
- "pallet-timestamp",
+ "pallet-timestamp 4.0.0-dev",
  "pallet-utility",
  "parity-scale-codec 3.1.5",
  "pretty_assertions",
@@ -6018,9 +6162,9 @@ version = "4.0.0-dev"
 dependencies = [
  "assert_matches",
  "frame-benchmarking",
- "frame-support",
- "frame-system",
- "pallet-balances",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
+ "pallet-balances 4.0.0-dev",
  "pallet-scheduler",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
@@ -6036,9 +6180,9 @@ name = "pallet-democracy"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
- "pallet-balances",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
+ "pallet-balances 4.0.0-dev",
  "pallet-scheduler",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
@@ -6055,10 +6199,10 @@ version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
  "frame-election-provider-support",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "log 0.4.17",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "parking_lot 0.12.1",
  "rand 0.7.3",
@@ -6079,10 +6223,10 @@ name = "pallet-elections-phragmen"
 version = "5.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "log 0.4.17",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
@@ -6094,14 +6238,66 @@ dependencies = [
 ]
 
 [[package]]
+name = "pallet-ethereum"
+version = "4.0.0-dev"
+source = "git+https://github.com/arbprof/frontier?branch=moonbeam-polkadot-v0.9.19#f89a779cf27b9bc5234e04c8a665c03b4d05dc41"
+dependencies = [
+ "ethereum",
+ "ethereum-types",
+ "evm",
+ "fp-consensus",
+ "fp-evm",
+ "fp-rpc",
+ "fp-self-contained",
+ "fp-storage",
+ "frame-support 4.0.0-dev (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "frame-system 4.0.0-dev (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "num_enum",
+ "pallet-balances 4.0.0-dev (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "pallet-evm",
+ "pallet-timestamp 4.0.0-dev (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "parity-scale-codec 3.1.5",
+ "rlp",
+ "scale-info 2.1.2",
+ "sha3 0.10.1",
+ "sp-io 6.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-runtime 6.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-std 4.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+]
+
+[[package]]
+name = "pallet-evm"
+version = "6.0.0-dev"
+source = "git+https://github.com/arbprof/frontier?branch=moonbeam-polkadot-v0.9.19#f89a779cf27b9bc5234e04c8a665c03b4d05dc41"
+dependencies = [
+ "evm",
+ "fp-evm",
+ "frame-support 4.0.0-dev (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "frame-system 4.0.0-dev (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "hex",
+ "log 0.4.17",
+ "pallet-balances 4.0.0-dev (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "pallet-timestamp 4.0.0-dev (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "parity-scale-codec 3.1.5",
+ "primitive-types",
+ "rlp",
+ "scale-info 2.1.2",
+ "sha3 0.10.1",
+ "sp-core 6.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-io 6.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-runtime 6.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-std 4.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+]
+
+[[package]]
 name = "pallet-example-basic"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "log 0.4.17",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
@@ -6114,8 +6310,8 @@ dependencies = [
 name = "pallet-example-offchain-worker"
 version = "4.0.0-dev"
 dependencies = [
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "lite-json",
  "log 0.4.17",
  "parity-scale-codec 3.1.5",
@@ -6131,8 +6327,8 @@ dependencies = [
 name = "pallet-example-parallel"
 version = "3.0.0-dev"
 dependencies = [
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
@@ -6147,9 +6343,9 @@ name = "pallet-gilt"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
- "pallet-balances",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-arithmetic 5.0.0",
@@ -6166,16 +6362,16 @@ dependencies = [
  "finality-grandpa",
  "frame-benchmarking",
  "frame-election-provider-support",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "log 0.4.17",
  "pallet-authorship",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "pallet-offences",
  "pallet-session",
  "pallet-staking",
  "pallet-staking-reward-curve",
- "pallet-timestamp",
+ "pallet-timestamp 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-application-crypto 6.0.0",
@@ -6185,7 +6381,7 @@ dependencies = [
  "sp-keyring",
  "sp-runtime 6.0.0",
  "sp-session",
- "sp-staking",
+ "sp-staking 4.0.0-dev",
  "sp-std 4.0.0",
 ]
 
@@ -6195,9 +6391,9 @@ version = "4.0.0-dev"
 dependencies = [
  "enumflags2",
  "frame-benchmarking",
- "frame-support",
- "frame-system",
- "pallet-balances",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
@@ -6211,8 +6407,8 @@ name = "pallet-im-online"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "log 0.4.17",
  "pallet-authorship",
  "pallet-session",
@@ -6222,7 +6418,7 @@ dependencies = [
  "sp-core 6.0.0",
  "sp-io 6.0.0",
  "sp-runtime 6.0.0",
- "sp-staking",
+ "sp-staking 4.0.0-dev",
  "sp-std 4.0.0",
 ]
 
@@ -6231,9 +6427,9 @@ name = "pallet-indices"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
- "pallet-balances",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
@@ -6248,10 +6444,10 @@ name = "pallet-lottery"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
+ "frame-support 4.0.0-dev",
  "frame-support-test",
- "frame-system",
- "pallet-balances",
+ "frame-system 4.0.0-dev",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
@@ -6265,8 +6461,8 @@ name = "pallet-membership"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "log 0.4.17",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
@@ -6283,8 +6479,8 @@ dependencies = [
  "ckb-merkle-mountain-range",
  "env_logger 0.9.0",
  "frame-benchmarking",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "hex-literal",
  "pallet-mmr-primitives",
  "parity-scale-codec 3.1.5",
@@ -6299,8 +6495,8 @@ dependencies = [
 name = "pallet-mmr-primitives"
 version = "4.0.0-dev"
 dependencies = [
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "hex-literal",
  "log 0.4.17",
  "parity-scale-codec 3.1.5",
@@ -6333,9 +6529,9 @@ name = "pallet-multisig"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
- "pallet-balances",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
@@ -6348,9 +6544,9 @@ dependencies = [
 name = "pallet-nicks"
 version = "4.0.0-dev"
 dependencies = [
- "frame-support",
- "frame-system",
- "pallet-balances",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
@@ -6363,8 +6559,8 @@ dependencies = [
 name = "pallet-node-authorization"
 version = "4.0.0-dev"
 dependencies = [
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "log 0.4.17",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
@@ -6378,17 +6574,17 @@ dependencies = [
 name = "pallet-offences"
 version = "4.0.0-dev"
 dependencies = [
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "log 0.4.17",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "serde",
  "sp-core 6.0.0",
  "sp-io 6.0.0",
  "sp-runtime 6.0.0",
- "sp-staking",
+ "sp-staking 4.0.0-dev",
  "sp-std 4.0.0",
 ]
 
@@ -6398,23 +6594,23 @@ version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
  "frame-election-provider-support",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "pallet-babe",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "pallet-grandpa",
  "pallet-im-online",
  "pallet-offences",
  "pallet-session",
  "pallet-staking",
  "pallet-staking-reward-curve",
- "pallet-timestamp",
+ "pallet-timestamp 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
  "sp-io 6.0.0",
  "sp-runtime 6.0.0",
- "sp-staking",
+ "sp-staking 4.0.0-dev",
  "sp-std 4.0.0",
 ]
 
@@ -6423,9 +6619,9 @@ name = "pallet-preimage"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
- "pallet-balances",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
@@ -6439,9 +6635,9 @@ name = "pallet-proxy"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
- "pallet-balances",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
+ "pallet-balances 4.0.0-dev",
  "pallet-utility",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
@@ -6455,8 +6651,8 @@ dependencies = [
 name = "pallet-randomness-collective-flip"
 version = "4.0.0-dev"
 dependencies = [
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "safe-mix",
  "scale-info 2.1.2",
@@ -6470,9 +6666,9 @@ dependencies = [
 name = "pallet-recovery"
 version = "4.0.0-dev"
 dependencies = [
- "frame-support",
- "frame-system",
- "pallet-balances",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
@@ -6487,9 +6683,9 @@ version = "4.0.0-dev"
 dependencies = [
  "assert_matches",
  "frame-benchmarking",
- "frame-support",
- "frame-system",
- "pallet-balances",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
+ "pallet-balances 4.0.0-dev",
  "pallet-preimage",
  "pallet-scheduler",
  "parity-scale-codec 3.1.5",
@@ -6506,8 +6702,8 @@ name = "pallet-scheduler"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "log 0.4.17",
  "pallet-preimage",
  "parity-scale-codec 3.1.5",
@@ -6523,9 +6719,9 @@ dependencies = [
 name = "pallet-scored-pool"
 version = "4.0.0-dev"
 dependencies = [
- "frame-support",
- "frame-system",
- "pallet-balances",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
@@ -6538,18 +6734,18 @@ dependencies = [
 name = "pallet-session"
 version = "4.0.0-dev"
 dependencies = [
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "impl-trait-for-tuples",
  "log 0.4.17",
- "pallet-timestamp",
+ "pallet-timestamp 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
  "sp-io 6.0.0",
  "sp-runtime 6.0.0",
  "sp-session",
- "sp-staking",
+ "sp-staking 4.0.0-dev",
  "sp-std 4.0.0",
  "sp-trie 6.0.0",
 ]
@@ -6560,13 +6756,13 @@ version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
  "frame-election-provider-support",
- "frame-support",
- "frame-system",
- "pallet-balances",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
+ "pallet-balances 4.0.0-dev",
  "pallet-session",
  "pallet-staking",
  "pallet-staking-reward-curve",
- "pallet-timestamp",
+ "pallet-timestamp 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "rand 0.7.3",
  "scale-info 2.1.2",
@@ -6581,10 +6777,10 @@ dependencies = [
 name = "pallet-society"
 version = "4.0.0-dev"
 dependencies = [
- "frame-support",
+ "frame-support 4.0.0-dev",
  "frame-support-test",
- "frame-system",
- "pallet-balances",
+ "frame-system 4.0.0-dev",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "rand_chacha 0.2.2",
  "scale-info 2.1.2",
@@ -6600,15 +6796,15 @@ version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
  "frame-election-provider-support",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "log 0.4.17",
  "pallet-authorship",
  "pallet-bags-list",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "pallet-session",
  "pallet-staking-reward-curve",
- "pallet-timestamp",
+ "pallet-timestamp 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "rand_chacha 0.2.2",
  "scale-info 2.1.2",
@@ -6618,7 +6814,7 @@ dependencies = [
  "sp-io 6.0.0",
  "sp-npos-elections",
  "sp-runtime 6.0.0",
- "sp-staking",
+ "sp-staking 4.0.0-dev",
  "sp-std 4.0.0",
  "sp-tracing 5.0.0",
  "substrate-test-utils",
@@ -6648,10 +6844,10 @@ name = "pallet-state-trie-migration"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "log 0.4.17",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "parking_lot 0.12.1",
  "remote-externalities",
@@ -6672,8 +6868,8 @@ dependencies = [
 name = "pallet-sudo"
 version = "4.0.0-dev"
 dependencies = [
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
@@ -6687,8 +6883,8 @@ name = "pallet-template"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
@@ -6701,17 +6897,33 @@ name = "pallet-timestamp"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "log 0.4.17",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-io 6.0.0",
  "sp-runtime 6.0.0",
  "sp-std 4.0.0",
- "sp-timestamp",
+ "sp-timestamp 4.0.0-dev",
+]
+
+[[package]]
+name = "pallet-timestamp"
+version = "4.0.0-dev"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
+dependencies = [
+ "frame-support 4.0.0-dev (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "frame-system 4.0.0-dev (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "log 0.4.17",
+ "parity-scale-codec 3.1.5",
+ "scale-info 2.1.2",
+ "sp-inherents 4.0.0-dev (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-runtime 6.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-std 4.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-timestamp 4.0.0-dev (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
 ]
 
 [[package]]
@@ -6719,10 +6931,10 @@ name = "pallet-tips"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "log 0.4.17",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "pallet-treasury",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
@@ -6738,9 +6950,9 @@ dependencies = [
 name = "pallet-transaction-payment"
 version = "4.0.0-dev"
 dependencies = [
- "frame-support",
- "frame-system",
- "pallet-balances",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "serde",
@@ -6783,15 +6995,15 @@ name = "pallet-transaction-storage"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "hex-literal",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "serde",
  "sp-core 6.0.0",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-io 6.0.0",
  "sp-runtime 6.0.0",
  "sp-std 4.0.0",
@@ -6803,10 +7015,10 @@ name = "pallet-treasury"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "impl-trait-for-tuples",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "serde",
@@ -6821,10 +7033,10 @@ name = "pallet-uniques"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "log 0.4.17",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
@@ -6838,9 +7050,9 @@ name = "pallet-utility"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
- "pallet-balances",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
@@ -6854,10 +7066,10 @@ name = "pallet-vesting"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "log 0.4.17",
- "pallet-balances",
+ "pallet-balances 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
@@ -6871,9 +7083,9 @@ name = "pallet-whitelist"
 version = "4.0.0-dev"
 dependencies = [
  "frame-benchmarking",
- "frame-support",
- "frame-system",
- "pallet-balances",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
+ "pallet-balances 4.0.0-dev",
  "pallet-preimage",
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
@@ -7429,7 +7641,7 @@ dependencies = [
  "impl-codec",
  "impl-rlp",
  "impl-serde",
- "scale-info 2.1.2",
+ "scale-info 1.0.0",
  "uint",
 ]
 
@@ -8004,7 +8216,7 @@ name = "remote-externalities"
 version = "0.10.0-dev"
 dependencies = [
  "env_logger 0.9.0",
- "frame-support",
+ "frame-support 4.0.0-dev",
  "jsonrpsee",
  "log 0.4.17",
  "pallet-elections-phragmen",
@@ -8364,7 +8576,7 @@ dependencies = [
  "sp-blockchain",
  "sp-consensus",
  "sp-core 6.0.0",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-runtime 6.0.0",
  "substrate-prometheus-endpoint",
  "substrate-test-runtime-client",
@@ -8380,7 +8592,7 @@ dependencies = [
  "sp-block-builder",
  "sp-blockchain",
  "sp-core 6.0.0",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-runtime 6.0.0",
  "sp-state-machine 0.12.0",
  "substrate-test-runtime-client",
@@ -8557,11 +8769,11 @@ dependencies = [
  "sp-consensus-aura",
  "sp-consensus-slots",
  "sp-core 6.0.0",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-keyring",
  "sp-keystore 0.12.0",
  "sp-runtime 6.0.0",
- "sp-timestamp",
+ "sp-timestamp 4.0.0-dev",
  "sp-tracing 5.0.0",
  "substrate-prometheus-endpoint",
  "substrate-test-runtime-client",
@@ -8606,11 +8818,11 @@ dependencies = [
  "sp-consensus-slots",
  "sp-consensus-vrf",
  "sp-core 6.0.0",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-io 6.0.0",
  "sp-keystore 0.12.0",
  "sp-runtime 6.0.0",
- "sp-timestamp",
+ "sp-timestamp 4.0.0-dev",
  "sp-tracing 5.0.0",
  "sp-version 5.0.0",
  "substrate-prometheus-endpoint",
@@ -8688,10 +8900,10 @@ dependencies = [
  "sp-consensus-babe",
  "sp-consensus-slots",
  "sp-core 6.0.0",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-keystore 0.12.0",
  "sp-runtime 6.0.0",
- "sp-timestamp",
+ "sp-timestamp 4.0.0-dev",
  "substrate-prometheus-endpoint",
  "substrate-test-runtime-client",
  "substrate-test-runtime-transaction-pool",
@@ -8717,7 +8929,7 @@ dependencies = [
  "sp-consensus",
  "sp-consensus-pow",
  "sp-core 6.0.0",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-runtime 6.0.0",
  "substrate-prometheus-endpoint",
  "thiserror",
@@ -8740,10 +8952,10 @@ dependencies = [
  "sp-consensus",
  "sp-consensus-slots",
  "sp-core 6.0.0",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-runtime 6.0.0",
  "sp-state-machine 0.12.0",
- "sp-timestamp",
+ "sp-timestamp 4.0.0-dev",
  "substrate-test-runtime-client",
  "thiserror",
 ]
@@ -9226,6 +9438,7 @@ dependencies = [
  "jsonrpc-core",
  "jsonrpc-pubsub",
  "log 0.4.17",
+ "pallet-ethereum",
  "parity-scale-codec 3.1.5",
  "parity-util-mem",
  "parking_lot 0.12.1",
@@ -9258,7 +9471,7 @@ dependencies = [
  "sp-consensus",
  "sp-core 6.0.0",
  "sp-externalities 0.12.0",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-keystore 0.12.0",
  "sp-runtime 6.0.0",
  "sp-session",
@@ -10017,7 +10230,7 @@ dependencies = [
 [[package]]
 name = "sp-api"
 version = "4.0.0-dev"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 dependencies = [
  "hash-db",
  "log 0.4.17",
@@ -10045,7 +10258,7 @@ dependencies = [
 [[package]]
 name = "sp-api-proc-macro"
 version = "4.0.0-dev"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 dependencies = [
  "blake2 0.10.4",
  "proc-macro-crate 1.1.3",
@@ -10104,7 +10317,7 @@ dependencies = [
 [[package]]
 name = "sp-application-crypto"
 version = "6.0.0"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 dependencies = [
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
@@ -10162,7 +10375,7 @@ dependencies = [
 [[package]]
 name = "sp-arithmetic"
 version = "5.0.0"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 dependencies = [
  "integer-sqrt",
  "num-traits",
@@ -10202,7 +10415,7 @@ version = "4.0.0-dev"
 dependencies = [
  "async-trait",
  "parity-scale-codec 3.1.5",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-runtime 6.0.0",
  "sp-std 4.0.0",
 ]
@@ -10213,7 +10426,7 @@ version = "4.0.0-dev"
 dependencies = [
  "parity-scale-codec 3.1.5",
  "sp-api 4.0.0-dev",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-runtime 6.0.0",
  "sp-std 4.0.0",
 ]
@@ -10245,7 +10458,7 @@ dependencies = [
  "log 0.4.17",
  "parity-scale-codec 3.1.5",
  "sp-core 6.0.0",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-runtime 6.0.0",
  "sp-state-machine 0.12.0",
  "sp-std 4.0.0",
@@ -10265,10 +10478,10 @@ dependencies = [
  "sp-application-crypto 6.0.0",
  "sp-consensus",
  "sp-consensus-slots",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-runtime 6.0.0",
  "sp-std 4.0.0",
- "sp-timestamp",
+ "sp-timestamp 4.0.0-dev",
 ]
 
 [[package]]
@@ -10286,11 +10499,11 @@ dependencies = [
  "sp-consensus-slots",
  "sp-consensus-vrf",
  "sp-core 6.0.0",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-keystore 0.12.0",
  "sp-runtime 6.0.0",
  "sp-std 4.0.0",
- "sp-timestamp",
+ "sp-timestamp 4.0.0-dev",
 ]
 
 [[package]]
@@ -10314,7 +10527,7 @@ dependencies = [
  "sp-arithmetic 5.0.0",
  "sp-runtime 6.0.0",
  "sp-std 4.0.0",
- "sp-timestamp",
+ "sp-timestamp 4.0.0-dev",
 ]
 
 [[package]]
@@ -10428,7 +10641,7 @@ dependencies = [
 [[package]]
 name = "sp-core"
 version = "6.0.0"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 dependencies = [
  "base58",
  "bitflags",
@@ -10501,7 +10714,7 @@ dependencies = [
 [[package]]
 name = "sp-core-hashing"
 version = "4.0.0"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 dependencies = [
  "blake2 0.10.4",
  "byteorder",
@@ -10525,7 +10738,7 @@ dependencies = [
 [[package]]
 name = "sp-core-hashing-proc-macro"
 version = "5.0.0"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -10564,7 +10777,7 @@ dependencies = [
 [[package]]
 name = "sp-debug-derive"
 version = "4.0.0"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -10596,7 +10809,7 @@ dependencies = [
 [[package]]
 name = "sp-externalities"
 version = "0.12.0"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 dependencies = [
  "environmental",
  "parity-scale-codec 3.1.5",
@@ -10633,6 +10846,17 @@ dependencies = [
  "sp-runtime 6.0.0",
  "sp-std 4.0.0",
  "thiserror",
+]
+
+[[package]]
+name = "sp-inherents"
+version = "4.0.0-dev"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
+dependencies = [
+ "impl-trait-for-tuples",
+ "parity-scale-codec 3.1.5",
+ "sp-core 6.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-std 4.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
 ]
 
 [[package]]
@@ -10688,7 +10912,7 @@ dependencies = [
 [[package]]
 name = "sp-io"
 version = "6.0.0"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 dependencies = [
  "futures 0.3.21",
  "hash-db",
@@ -10758,7 +10982,7 @@ dependencies = [
 [[package]]
 name = "sp-keystore"
 version = "0.12.0"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 dependencies = [
  "async-trait",
  "futures 0.3.21",
@@ -10839,7 +11063,7 @@ dependencies = [
 [[package]]
 name = "sp-panic-handler"
 version = "4.0.0"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 dependencies = [
  "backtrace",
  "lazy_static",
@@ -10909,7 +11133,7 @@ dependencies = [
 [[package]]
 name = "sp-runtime"
 version = "6.0.0"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 dependencies = [
  "either",
  "hash256-std-hasher",
@@ -10971,7 +11195,7 @@ dependencies = [
 [[package]]
 name = "sp-runtime-interface"
 version = "6.0.0"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 dependencies = [
  "impl-trait-for-tuples",
  "parity-scale-codec 3.1.5",
@@ -11012,7 +11236,7 @@ dependencies = [
 [[package]]
 name = "sp-runtime-interface-proc-macro"
 version = "5.0.0"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 dependencies = [
  "Inflector",
  "proc-macro-crate 1.1.3",
@@ -11091,7 +11315,7 @@ dependencies = [
  "sp-api 4.0.0-dev",
  "sp-core 6.0.0",
  "sp-runtime 6.0.0",
- "sp-staking",
+ "sp-staking 4.0.0-dev",
  "sp-std 4.0.0",
 ]
 
@@ -11103,6 +11327,17 @@ dependencies = [
  "scale-info 2.1.2",
  "sp-runtime 6.0.0",
  "sp-std 4.0.0",
+]
+
+[[package]]
+name = "sp-staking"
+version = "4.0.0-dev"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
+dependencies = [
+ "parity-scale-codec 3.1.5",
+ "scale-info 2.1.2",
+ "sp-runtime 6.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-std 4.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
 ]
 
 [[package]]
@@ -11156,7 +11391,7 @@ dependencies = [
 [[package]]
 name = "sp-state-machine"
 version = "0.12.0"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 dependencies = [
  "hash-db",
  "log 0.4.17",
@@ -11188,7 +11423,7 @@ checksum = "14804d6069ee7a388240b665f17908d98386ffb0b5d39f89a4099fc7a2a4c03f"
 [[package]]
 name = "sp-std"
 version = "4.0.0"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 
 [[package]]
 name = "sp-storage"
@@ -11219,7 +11454,7 @@ dependencies = [
 [[package]]
 name = "sp-storage"
 version = "6.0.0"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 dependencies = [
  "impl-serde",
  "parity-scale-codec 3.1.5",
@@ -11263,10 +11498,22 @@ dependencies = [
  "log 0.4.17",
  "parity-scale-codec 3.1.5",
  "sp-api 4.0.0-dev",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-runtime 6.0.0",
  "sp-std 4.0.0",
  "thiserror",
+]
+
+[[package]]
+name = "sp-timestamp"
+version = "4.0.0-dev"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
+dependencies = [
+ "parity-scale-codec 3.1.5",
+ "sp-api 4.0.0-dev (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-inherents 4.0.0-dev (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-runtime 6.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
+ "sp-std 4.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
 ]
 
 [[package]]
@@ -11296,7 +11543,7 @@ dependencies = [
 [[package]]
 name = "sp-tracing"
 version = "5.0.0"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 dependencies = [
  "parity-scale-codec 3.1.5",
  "sp-std 4.0.0 (git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19)",
@@ -11322,7 +11569,7 @@ dependencies = [
  "parity-scale-codec 3.1.5",
  "scale-info 2.1.2",
  "sp-core 6.0.0",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-runtime 6.0.0",
  "sp-std 4.0.0",
  "sp-trie 6.0.0",
@@ -11367,7 +11614,7 @@ dependencies = [
 [[package]]
 name = "sp-trie"
 version = "6.0.0"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 dependencies = [
  "hash-db",
  "memory-db",
@@ -11399,7 +11646,7 @@ dependencies = [
 [[package]]
 name = "sp-version"
 version = "5.0.0"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 dependencies = [
  "impl-serde",
  "parity-scale-codec 3.1.5",
@@ -11427,7 +11674,7 @@ dependencies = [
 [[package]]
 name = "sp-version-proc-macro"
 version = "4.0.0-dev"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 dependencies = [
  "parity-scale-codec 3.1.5",
  "proc-macro2",
@@ -11463,7 +11710,7 @@ dependencies = [
 [[package]]
 name = "sp-wasm-interface"
 version = "6.0.0"
-source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#df7975dcd3ee5046c30082e2f6d1b8be889642f3"
+source = "git+https://github.com/arbprof/substrate?branch=moonbeam-polkadot-v0.9.19#02aae1518d3f585b72e4943202aa9d7480dac587"
 dependencies = [
  "impl-trait-for-tuples",
  "log 0.4.17",
@@ -11589,8 +11836,8 @@ name = "substrate-frame-cli"
 version = "4.0.0-dev"
 dependencies = [
  "clap 3.2.5",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "sc-cli",
  "sp-core 6.0.0",
  "sp-runtime 6.0.0",
@@ -11600,8 +11847,8 @@ dependencies = [
 name = "substrate-frame-rpc-support"
 version = "3.0.0"
 dependencies = [
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "futures 0.3.21",
  "jsonrpc-client-transports",
  "parity-scale-codec 3.1.5",
@@ -11702,14 +11949,14 @@ version = "2.0.0"
 dependencies = [
  "beefy-primitives",
  "cfg-if 1.0.0",
- "frame-support",
- "frame-system",
+ "frame-support 4.0.0-dev",
+ "frame-system 4.0.0-dev",
  "frame-system-rpc-runtime-api",
  "futures 0.3.21",
  "log 0.4.17",
  "memory-db",
  "pallet-babe",
- "pallet-timestamp",
+ "pallet-timestamp 4.0.0-dev",
  "parity-scale-codec 3.1.5",
  "parity-util-mem",
  "sc-block-builder",
@@ -11726,7 +11973,7 @@ dependencies = [
  "sp-core 6.0.0",
  "sp-externalities 0.12.0",
  "sp-finality-grandpa",
- "sp-inherents",
+ "sp-inherents 4.0.0-dev",
  "sp-io 6.0.0",
  "sp-keyring",
  "sp-offchain",
