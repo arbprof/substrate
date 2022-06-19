@@ -54,6 +54,10 @@ use fc_rpc_core::types::Bytes;
 
 use jsonrpc_core::{futures::future, BoxFuture, Result as ResultF};
 
+// use sp_runtime::generic::UncheckedExtrinsic;
+
+use frontier_template_runtime::{opaque, UncheckedExtrinsic};
+
 use desub_current::{
 	decoder::{self, SignedExtensionWithAdditional},
 	value, Metadata, Value, ValueDef,
@@ -555,9 +559,15 @@ where
 								rlp::decode::<ethereum::TransactionV2>(&extend[..]).ok().unwrap()
 							};
 
-							let extrinsic = sp_runtime::generic::UncheckedExtrinsic::new_unsigned(
-								pallet_ethereum::Call::transact { transaction }.into(),
-							);
+							let extrinsic = {
+								let unsigned =
+									sp_runtime::generic::UncheckedExtrinsic::new_unsigned(
+										pallet_ethereum::Call::transact { transaction }.into(),
+									);
+								let encoded = unsigned.encode();
+								opaque::UncheckedExtrinsic::decode(&mut &encoded[..])
+									.expect("Encoded extrinsic is always valid")
+							};
 
 							self.pool.submit_one(
 								&best_block_id,
