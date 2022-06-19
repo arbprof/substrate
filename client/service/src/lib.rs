@@ -565,8 +565,21 @@ where
 										pallet_ethereum::Call::transact { transaction }.into(),
 									);
 								let encoded = unsigned.encode();
-								opaque::UncheckedExtrinsic::decode(&mut &encoded[..])
-									.expect("Encoded extrinsic is always valid")
+
+								let uxt = match Decode::decode(&mut &encoded[..]) {
+									Ok(uxt) => uxt,
+									Err(e) => {
+										debug!("Transaction invalid: {:?}", e);
+										return Box::pin(futures::future::ready(
+											TransactionImport::Bad,
+										));
+									},
+								};
+
+								uxt
+
+								// opaque::UncheckedExtrinsic::decode(&mut &encoded[..])
+								// 	.expect("Encoded extrinsic is always valid")
 							};
 
 							self.pool.submit_one(
