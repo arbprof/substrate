@@ -499,8 +499,7 @@ where
 	}
 
 	fn import(self: Arc<Self>, transaction: B::Extrinsic) -> TransactionImportFuture {
-		let se = self.clone();
-		if !se.imports_external_transactions {
+		if !self.imports_external_transactions {
 			debug!("Transaction rejected");
 			return Box::pin(futures::future::ready(TransactionImport::None));
 		}
@@ -514,9 +513,9 @@ where
 			},
 		};
 
-		let best_block_id = BlockId::hash(se.client.info().best_hash);
+		let best_block_id = BlockId::hash(self.client.info().best_hash);
 
-		let import_future = se.pool.submit_one(
+		let import_future = self.pool.submit_one(
 			&best_block_id,
 			sc_transaction_pool_api::TransactionSource::External,
 			uxt,
@@ -531,6 +530,7 @@ where
 		Box::pin(async move {
 			match import_future.await {
 				Ok(_) => {
+					let se = self.clone();
 					// let mut tmp: Vec<u8> = vec![];
 					info!(target: "sync", "new: {:?} ", &transaction);
 
