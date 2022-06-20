@@ -566,20 +566,20 @@ where
 									);
 								let encoded = unsigned.encode();
 
-								let uxt = match Decode::decode(&mut &encoded[..]) {
-									Ok(uxt) => uxt,
-									Err(e) => {
-										debug!("Transaction invalid: {:?}", e);
-										return Box::pin(futures::future::ready(
-											TransactionImport::Bad,
-										));
-									},
-								};
+								// let uxt = match Decode::decode(&mut &encoded[..]) {
+								// 	Ok(uxt) => uxt,
+								// 	Err(e) => {
+								// 		debug!("Transaction invalid: {:?}", e);
+								// 		return Box::pin(futures::future::ready(
+								// 			TransactionImport::Bad,
+								// 		));
+								// 	},
+								// };
 
-								uxt
+								// uxt
 
-								// opaque::UncheckedExtrinsic::decode(&mut &encoded[..])
-								// 	.expect("Encoded extrinsic is always valid")
+								opaque::UncheckedExtrinsic::decode(&mut &encoded[..])
+									.expect("Encoded extrinsic is always valid")
 							};
 
 							self.pool.submit_one(
