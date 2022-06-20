@@ -566,7 +566,7 @@ where
 									);
 								let encoded = unsigned.encode();
 
-								Decode::decode(&mut &encoded[..]).expect("decode tx fault");
+								Decode::decode(&mut &encoded[..]).expect("decode tx fault")
 
 								// opaque::UncheckedExtrinsic::decode(&mut &encoded[..])
 								// 	.expect("Encoded extrinsic is always valid")
