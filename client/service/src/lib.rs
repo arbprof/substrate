@@ -550,43 +550,25 @@ where
 							let slice = &txbytes.0[..];
 
 							let transaction = {
-								// Typed Transaction.
-								// `ethereum` crate decode implementation for `TransactionV2` expects a valid rlp input,
-								// and EIP-1559 breaks that assumption by prepending a version byte.
-								// We re-encode the payload input to get a valid rlp, and the decode implementation will strip
-								// them to check the transaction version byte.
 								let extend = rlp::encode(&slice);
 								rlp::decode::<ethereum::TransactionV2>(&extend[..]).ok().unwrap()
 							};
 
-							self.import(transaction);
+							info!("decoded transactionv2: {:?}", transaction);
 
-							// let extrinsic = {
-							// 	let unsigned =
-							// 		sp_runtime::generic::UncheckedExtrinsic::new_unsigned(
-							// 			pallet_ethereum::Call::transact { transaction }.into(),
-							// 		);
-							// 	let encoded = unsigned.encode();
+							let encoded = transaction.encode();
 
-							// 	Decode::decode(&mut &encoded[..]).expect("decode tx fault")
+							let extrinsic =
+								Decode::decode(&mut &encoded[..]).expect("decode tx fault");
 
-							// 	// opaque::UncheckedExtrinsic::decode(&mut &encoded[..])
-							// 	// 	.expect("Encoded extrinsic is always valid")
-							// };
-
-							// self.pool.submit_one(
-							// 	&best_block_id,
-							// 	sc_transaction_pool_api::TransactionSource::External,
-							// 	extrinsic,
-							// );
+							self.pool.submit_one(
+								&best_block_id,
+								sc_transaction_pool_api::TransactionSource::External,
+								extrinsic,
+							);
 						},
 						Err(error) => (),
 					};
-
-					// let encoded = transaction.encode();
-					// info!(target: "sync", "call: {:?} ", &encoded[0..6]);
-
-					// info!(target: "sync", "call: {:?} ", &ext);
 
 					TransactionImport::NewGood
 				},
