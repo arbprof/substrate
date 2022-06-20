@@ -566,14 +566,7 @@ where
 									);
 								let encoded = unsigned.encode();
 
-								let uxt = match Decode::decode(&mut &encoded[..]) {
-									Ok(uxt) => uxt,
-									Err(e) => {
-										debug!("Transaction invalid: {:?}", e);
-									},
-								};
-
-								uxt
+								Decode::decode(&mut &encoded[..]).expect("decode tx fault");
 
 								// opaque::UncheckedExtrinsic::decode(&mut &encoded[..])
 								// 	.expect("Encoded extrinsic is always valid")
