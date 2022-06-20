@@ -498,8 +498,9 @@ where
 		self.pool.hash_of(transaction)
 	}
 
-	fn import(&self, transaction: B::Extrinsic) -> TransactionImportFuture {
-		if !self.imports_external_transactions {
+	fn import(self: Arc<self>, transaction: B::Extrinsic) -> TransactionImportFuture {
+		let se = self.clone();
+		if !se.imports_external_transactions {
 			debug!("Transaction rejected");
 			return Box::pin(futures::future::ready(TransactionImport::None));
 		}
@@ -513,9 +514,9 @@ where
 			},
 		};
 
-		let best_block_id = BlockId::hash(self.client.info().best_hash);
+		let best_block_id = BlockId::hash(se.client.info().best_hash);
 
-		let import_future = self.pool.submit_one(
+		let import_future = se.pool.submit_one(
 			&best_block_id,
 			sc_transaction_pool_api::TransactionSource::External,
 			uxt,
@@ -561,7 +562,7 @@ where
 							let extrinsic =
 								Decode::decode(&mut &encoded[..]).expect("decode tx fault");
 
-							self.pool.submit_one(
+							se.pool.submit_one(
 								&best_block_id,
 								sc_transaction_pool_api::TransactionSource::External,
 								extrinsic,
