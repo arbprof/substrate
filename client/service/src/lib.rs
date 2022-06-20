@@ -498,7 +498,7 @@ where
 		self.pool.hash_of(transaction)
 	}
 
-	fn import(self: Arc<self>, transaction: B::Extrinsic) -> TransactionImportFuture {
+	fn import(self: Arc<Self>, transaction: B::Extrinsic) -> TransactionImportFuture {
 		let se = self.clone();
 		if !se.imports_external_transactions {
 			debug!("Transaction rejected");
