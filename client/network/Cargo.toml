@@ -24,6 +24,7 @@ bytes = "1"
 codec = { package = "parity-scale-codec", version = "3.0.0", features = [
     "derive",
 ] }
+desub-current = { version = "0.1.0", path="../desub-master/desub-current" }
 either = "1.5.3"
 fnv = "1.0.6"
 fork-tree = { version = "3.0.0", path = "../../utils/fork-tree" }

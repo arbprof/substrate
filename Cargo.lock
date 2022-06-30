@@ -9530,6 +9530,7 @@ dependencies = [
  "bitflags",
  "bytes 1.1.0",
  "cid",
+ "desub-current",
  "either",
  "fnv",
  "fork-tree",

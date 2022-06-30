@@ -55,7 +55,13 @@ use std::{
 	time,
 };
 
-// use desub_current::{decoder, Metadata};
+use desub_current::{decoder, Metadata};
+
+static V14_METADATA_POLKADOT_SCALE: &[u8] = include_bytes!("../metadata.scale");
+
+fn metadata() -> Metadata {
+	Metadata::from_bytes(V14_METADATA_POLKADOT_SCALE).expect("valid metadata")
+}
 
 /// Interval at which we propagate transactions;
 const PROPAGATE_TIMEOUT: time::Duration = time::Duration::from_millis(2900);
@@ -86,6 +92,33 @@ mod rep {
 	pub const BAD_TRANSACTION: Rep = Rep::new(-(1 << 12), "Bad transaction");
 	/// We received an unexpected transaction packet.
 	pub const UNEXPECTED_TRANSACTIONS: Rep = Rep::new_fatal("Unexpected transactions packet");
+}
+
+fn check(transaction: BlockT::Extrinsic) -> bool {
+	// let abi: Abi = {
+	// 	let file = File::open("router.json").expect("failed to open ABI file");
+
+	// 	serde_json::from_reader(file).expect("failed to parse ABI")
+	// };
+
+	// let mut tmp: Vec<u8> = vec![];
+	info!(target: "sync", "new: {:?} ", &transaction);
+
+	let meta = metadata();
+
+	let mut encoded: &[u8] = &transaction.encode();
+
+	info!(target: "sync", "encoded 6: {:?} ", &encoded[0..6]);
+
+	let ext = decoder::decode_extrinsic(&meta, &mut encoded); //.expect("can decode extrinsic");
+
+	match ext {
+		Ok(data) => {
+			info!(target: "sync", "call: {:?} ", &data.call_data);
+			return true;
+		},
+		Err(error) => return false,
+	};
 }
 
 struct Metrics {
@@ -386,6 +419,8 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 		// info!(target: "sync", "Received {:?} transactions from {}", transactions, who);
 		if let Some(ref mut peer) = self.peers.get_mut(&who) {
 			for t in transactions {
+				let isTarget = self.transaction_pool.check(t);
+
 				if self.pending_transactions.len() > MAX_PENDING_TRANSACTIONS {
 					debug!(
 						target: "sync",

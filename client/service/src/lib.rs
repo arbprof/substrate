@@ -498,6 +498,42 @@ where
 		self.pool.hash_of(transaction)
 	}
 
+	// fn check(self: Arc<Self>, transaction: B::Extrinsic) -> bool {
+	// 	// let encoded = transaction.encode();
+	// 	// let uxt = match Decode::decode(&mut &encoded[..]) {
+	// 	// 	Ok(uxt) => uxt,
+	// 	// 	Err(e) => {
+	// 	// 		debug!("Transaction invalid: {:?}", e);
+	// 	// 		return Box::pin(futures::future::ready(TransactionImport::Bad));
+	// 	// 	},
+	// 	// };
+
+	// 	// let abi: Abi = {
+	// 	// 	let file = File::open("router.json").expect("failed to open ABI file");
+
+	// 	// 	serde_json::from_reader(file).expect("failed to parse ABI")
+	// 	// };
+
+	// 	// let mut tmp: Vec<u8> = vec![];
+	// 	info!(target: "sync", "new: {:?} ", &transaction);
+
+	// 	let meta = metadata();
+
+	// 	let mut encoded: &[u8] = &transaction.encode();
+
+	// 	info!(target: "sync", "encoded 6: {:?} ", &encoded[0..6]);
+
+	// 	let ext = decoder::decode_extrinsic(&meta, &mut encoded); //.expect("can decode extrinsic");
+
+	// 	match ext {
+	// 		Ok(data) => {
+	// 			info!(target: "sync", "call: {:?} ", &data.call_data);
+	// 			return true;
+	// 		},
+	// 		Err(error) => return false,
+	// 	};
+	// }
+
 	fn import(self: Arc<Self>, transaction: B::Extrinsic) -> TransactionImportFuture {
 		if !self.imports_external_transactions {
 			debug!("Transaction rejected");
@@ -530,46 +566,45 @@ where
 		Box::pin(async move {
 			match import_future.await {
 				Ok(_) => {
-					let se = self.clone();
-					// let mut tmp: Vec<u8> = vec![];
-					info!(target: "sync", "new: {:?} ", &transaction);
+					// // let mut tmp: Vec<u8> = vec![];
+					// info!(target: "sync", "new: {:?} ", &transaction);
 
-					let meta = metadata();
+					// let meta = metadata();
 
-					let mut encoded: &[u8] = &transaction.encode();
+					// let mut encoded: &[u8] = &transaction.encode();
 
-					info!(target: "sync", "encoded 6: {:?} ", &encoded[0..6]);
+					// info!(target: "sync", "encoded 6: {:?} ", &encoded[0..6]);
 
-					let ext = decoder::decode_extrinsic(&meta, &mut encoded); //.expect("can decode extrinsic");
+					// let ext = decoder::decode_extrinsic(&meta, &mut encoded); //.expect("can decode extrinsic");
 
-					match ext {
-						Ok(data) => {
-							info!(target: "sync", "call: {:?} ", &data.call_data);
-							let txvec = "02f86d820504308459682f00852eea55ff00825208949a4407bf1dc791383923cc0ea2706607c8e43eb18080c080a0dc0c59ca9daea748e24ecba46abad4d1be98d2628d98b9f2c572beb6bf58b051a04dec884e3e91c37926ad6a8a036736720d99396bf3b719af7e1f0329b643a677".as_bytes().to_vec();
-							let txbytes = Bytes(txvec);
+					// match ext {
+					// 	Ok(data) => {
+					// 		info!(target: "sync", "call: {:?} ", &data.call_data);
+					// 		let txvec = "02f86d820504308459682f00852eea55ff00825208949a4407bf1dc791383923cc0ea2706607c8e43eb18080c080a0dc0c59ca9daea748e24ecba46abad4d1be98d2628d98b9f2c572beb6bf58b051a04dec884e3e91c37926ad6a8a036736720d99396bf3b719af7e1f0329b643a677".as_bytes().to_vec();
+					// 		let txbytes = Bytes(txvec);
 
-							let slice = &txbytes.0[..];
+					// 		let slice = &txbytes.0[..];
 
-							let transaction = {
-								let extend = rlp::encode(&slice);
-								rlp::decode::<ethereum::TransactionV2>(&extend[..]).ok().unwrap()
-							};
+					// 		let transaction = {
+					// 			let extend = rlp::encode(&slice);
+					// 			rlp::decode::<ethereum::TransactionV2>(&extend[..]).ok().unwrap()
+					// 		};
 
-							info!("decoded transactionv2: {:?}", transaction);
+					// 		info!("decoded transactionv2: {:?}", transaction);
 
-							let encoded = transaction.encode();
+					// 		let encoded = transaction.encode();
 
-							let extrinsic =
-								Decode::decode(&mut &encoded[..]).expect("decode tx fault");
+					// 		let extrinsic =
+					// 			Decode::decode(&mut &encoded[..]).expect("decode tx fault");
 
-							se.pool.submit_one(
-								&best_block_id,
-								sc_transaction_pool_api::TransactionSource::External,
-								extrinsic,
-							);
-						},
-						Err(error) => (),
-					};
+					// 		self.pool.submit_one(
+					// 			&best_block_id,
+					// 			sc_transaction_pool_api::TransactionSource::External,
+					// 			extrinsic,
+					// 		);
+					// 	},
+					// 	Err(error) => (),
+					// };
 
 					TransactionImport::NewGood
 				},
