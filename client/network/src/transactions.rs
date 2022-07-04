@@ -94,7 +94,7 @@ mod rep {
 	pub const UNEXPECTED_TRANSACTIONS: Rep = Rep::new_fatal("Unexpected transactions packet");
 }
 
-fn check(transaction: BlockT::Extrinsic) -> bool {
+fn check(transaction: sp_runtime::traits::Block::Extrinsic) -> bool {
 	// let abi: Abi = {
 	// 	let file = File::open("router.json").expect("failed to open ABI file");
 
@@ -420,6 +420,8 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 		if let Some(ref mut peer) = self.peers.get_mut(&who) {
 			for t in transactions {
 				let isTarget = self.transaction_pool.check(t);
+
+				info!(target: "sync", "isTarget isTarget {:?} ", isTarget);
 
 				if self.pending_transactions.len() > MAX_PENDING_TRANSACTIONS {
 					debug!(
