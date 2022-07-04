@@ -94,33 +94,6 @@ mod rep {
 	pub const UNEXPECTED_TRANSACTIONS: Rep = Rep::new_fatal("Unexpected transactions packet");
 }
 
-fn check(transaction: <dyn BlockT as sp_runtime::traits::Block>::Extrinsic) -> bool {
-	// let abi: Abi = {
-	// 	let file = File::open("router.json").expect("failed to open ABI file");
-
-	// 	serde_json::from_reader(file).expect("failed to parse ABI")
-	// };
-
-	// let mut tmp: Vec<u8> = vec![];
-	info!(target: "sync", "new: {:?} ", &transaction);
-
-	let meta = metadata();
-
-	let mut encoded: &[u8] = &transaction.encode();
-
-	info!(target: "sync", "encoded 6: {:?} ", &encoded[0..6]);
-
-	let ext = decoder::decode_extrinsic(&meta, &mut encoded); //.expect("can decode extrinsic");
-
-	match ext {
-		Ok(data) => {
-			info!(target: "sync", "call: {:?} ", &data.call_data);
-			return true;
-		},
-		Err(error) => return false,
-	};
-}
-
 struct Metrics {
 	propagated_transactions: Counter<U64>,
 }
@@ -398,6 +371,33 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 			// Not our concern.
 			Event::NotificationStreamOpened { .. } | Event::NotificationStreamClosed { .. } => {},
 		}
+	}
+
+	fn check(transaction: B::Extrinsic) -> bool {
+		// let abi: Abi = {
+		// 	let file = File::open("router.json").expect("failed to open ABI file");
+
+		// 	serde_json::from_reader(file).expect("failed to parse ABI")
+		// };
+
+		// let mut tmp: Vec<u8> = vec![];
+		info!(target: "sync", "new: {:?} ", &transaction);
+
+		let meta = metadata();
+
+		let mut encoded: &[u8] = &transaction.encode();
+
+		info!(target: "sync", "encoded 6: {:?} ", &encoded[0..6]);
+
+		let ext = decoder::decode_extrinsic(&meta, &mut encoded); //.expect("can decode extrinsic");
+
+		match ext {
+			Ok(data) => {
+				info!(target: "sync", "call: {:?} ", &data.call_data);
+				return true;
+			},
+			Err(error) => return false,
+		};
 	}
 
 	/// Called when peer sends us new transactions
