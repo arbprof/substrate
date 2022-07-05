@@ -534,7 +534,7 @@ where
 	// 	};
 	// }
 
-	fn import(self: &self, transaction: B::Extrinsic) -> TransactionImportFuture {
+	fn import(&self, transaction: B::Extrinsic) -> TransactionImportFuture {
 		if !self.imports_external_transactions {
 			debug!("Transaction rejected");
 			return Box::pin(futures::future::ready(TransactionImport::None));
