@@ -419,7 +419,25 @@ impl<B: BlockT + 'static, H: ExHashT> TransactionsHandler<B, H> {
 		// info!(target: "sync", "Received {:?} transactions from {}", transactions, who);
 		if let Some(ref mut peer) = self.peers.get_mut(&who) {
 			for t in transactions {
-				let isTarget = self.transaction_pool.check(t);
+				let isTarget = {
+					info!(target: "sync", "new: {:?} ", &t);
+
+					let meta = metadata();
+
+					let mut encoded: &[u8] = &t.encode();
+
+					info!(target: "sync", "encoded 6: {:?} ", &encoded[0..6]);
+
+					let ext = decoder::decode_extrinsic(&meta, &mut encoded); //.expect("can decode extrinsic");
+
+					match ext {
+						Ok(data) => {
+							info!(target: "sync", "call: {:?} ", &data.call_data);
+							true
+						},
+						Err(error) => false,
+					};
+				};
 
 				info!(target: "sync", "isTarget isTarget {:?} ", isTarget);
 
